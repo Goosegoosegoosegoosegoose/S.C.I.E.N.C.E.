@@ -1,0 +1,684 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>S.C.I.E.N.C.E. manual</title><style>
+@page { size: letter landscape; margin: 0.35in; }
+* { box-sizing: border-box; }
+body { font-family: "Helvetica Neue", Arial, sans-serif; color: #1b1b1b; margin: 0; font-size: 8.6pt; }
+h1 { font-size: 17pt; margin: 0; letter-spacing: 0.5px; display: inline-block; }
+.sub { color: #666; font-size: 9pt; margin-left: 10px; }
+h2 { font-size: 9.5pt; text-transform: uppercase; letter-spacing: 1px; color: #444; margin: 8px 0 4px; border-bottom: 1px solid #ddd; padding-bottom: 2px; }
+.pages { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid { display: grid; grid-template-columns: 26px repeat(16, 1fr); gap: 2px; }
+.rl { font-size: 7pt; color: #777; display: flex; align-items: center; justify-content: flex-end; padding-right: 3px; text-align: right; line-height: 1; }
+.cl { font-size: 6.5pt; color: #999; text-align: center; }
+.k { height: 27px; border-radius: 3px; border: 1px solid #c9c9c9; background: #f4f4f4;
+     font-size: 5.6pt; line-height: 1.05; display: flex; align-items: center; justify-content: center; text-align: center; padding: 1px; overflow: hidden; }
+.wide { grid-column: span 16; height: auto; padding: 4px; font-size: 7.4pt; background: #eef1f5; border-color: #dde2ea; color: #4c5664; display: block; text-align: center; }
+.trk { grid-column: span 16; background: #eef1f5; border-color: #dde2ea; color: #4c5664; font-size: 7pt; }
+.tape { background: #fff3df; border-color: #e9b864; font-weight: 600; }
+.spd  { background: #fdf8ef; border-color: #e9cf9c; }
+.spd1 { background: #f6deb0; border-color: #d9a441; font-weight: 700; }
+.tr   { background: #e3f0e6; border-color: #6fae7f; font-weight: 600; }
+.len  { background: #f1f7f2; border-color: #a9cdb2; }
+.sel  { background: #e6e9fb; border-color: #8a94d9; font-weight: 600; }
+.danger { background: #fbe4e2; border-color: #d27b72; font-weight: 600; }
+.page { background: #2d2d2d; color: #fff; border-color: #2d2d2d; font-weight: 700; }
+.au   { background: #eaf4fb; border-color: #86b7d9; font-weight: 600; }
+.lv   { background: #f4f9fc; border-color: #b9d4e6; }
+.ring { background:#f3f3f3; border-color:#bbb; color:#888; }
+.big { background:#e3f0e6; border-color:#5f9f6f; font-weight:700; }
+.stop { background:#f4f4f4; border-color:#999; font-weight:600; }
+.off { background: #fafafa; border-style: dashed; color: #bbb; }
+.cols { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 16px; }
+table { border-collapse: collapse; width: 100%; }
+td { padding: 2px 3px; vertical-align: top; border-bottom: 1px solid #eee; }
+td:first-child { font-weight: 700; white-space: nowrap; width: 1%; padding-right: 8px; }
+.cap { font-size: 8pt; font-weight: 700; margin: 2px 0 3px; color: #333; }
+
+.pb { page-break-before: always; }
+.mhead { border-bottom: 2px solid #2d2d2d; padding-bottom: 3px; margin-bottom: 6px; display:flex; align-items: baseline; gap: 10px; }
+.mhead h1 { font-size: 16pt; white-space: nowrap; }
+.cover { height: 7.6in; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding-left: 0.6in; }
+.cover .big { font-size: 64pt; font-weight: 800; letter-spacing: 6px; }
+.cover .full { font-size: 18pt; color:#444; margin-top: 4px; }
+.cover .what { font-size: 12pt; color:#555; margin-top: 18px; line-height: 1.4; }
+.cover .ver { font-size: 10pt; color:#888; margin-top: 10px; }
+.toc { margin-top: 26px; width: 7.5in; font-size: 11pt; }
+.toc td { padding: 5px 8px; border-bottom: 1px solid #ddd; }
+.toc td:first-child { font-weight: 800; width: 24px; color:#999; }
+.toc td:nth-child(2) { font-weight: 700; white-space: nowrap; width: 2.2in; }
+.figure { border: 1px solid #ddd; border-radius: 6px; padding: 4px; margin-bottom: 6px; }
+.wiring { width: 100%; height: 3.3in; } .note { color:#555; font-size: 8.3pt; margin: 2px 0 6px; }
+.cols3 { display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; font-size: 8.8pt; }
+.cols3 ol, .cols3 ul { margin: 2px 0 4px; padding-left: 16px; }
+.cols3 li { margin-bottom: 2px; }
+.cols3 p { margin: 2px 0; }
+code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
+.ptab { font-size: 8.4pt; } .ptab td { padding: 2px 4px !important; }
+.ptab th { text-align:left; border-bottom: 2px solid #ccc; padding: 3px 4px; }
+.ptab td { padding: 3px 4px; }
+.ptab td:first-child { color:#777; font-weight: 600; }
+.walk { columns: 2; column-gap: 24px; font-size: 9.6pt; }
+.wsec { break-inside: avoid; margin-bottom: 4px; }
+.wsec p { margin: 2px 0 6px; line-height: 1.35; }
+</style></head><body>
+<div class="cover">
+  <div class="big">S.C.I.E.N.C.E.</div>
+  <div class="full">South Central Indiana Electro Noise Circuit Experiment</div>
+  <div class="what">sci.lua · a norns + grid instrument: LinnStrument MPE loops, audio loops,<br>tape mangling, a 505-style looper and Alecto drums</div>
+  <div class="ver">Manual · build of Nov 17, 2026 · with nanoKEY / nanoPAD2 · for norns shield XL Pro + 16×8 grid</div>
+  <table class="toc">
+  <tr><td>1</td><td>Setup &amp; wiring</td><td>install, MIDI &amp; CV, audio and send loops, the ZOIA patch</td></tr>
+  <tr><td>2</td><td>Quick start</td><td>your first MIDI loop, audio loop and beat</td></tr>
+  <tr><td>3</td><td>Grid reference</td><td>MIDI &amp; AUDIO pages, rows 7–8, LOOP, QUANT, DRUM, SAVE</td></tr>
+  <tr><td>4</td><td>PARAMS reference</td><td>every setting in the PARAMS menu</td></tr>
+  <tr><td>5</td><td>Troubleshooting &amp; limits</td><td>what to check when something's off</td></tr>
+  <tr><td>6</td><td>How the code works</td><td>a section-by-section walkthrough of sci.lua</td></tr>
+  </table>
+</div><div class="pb"></div><div class="mhead"><h1>Wiring: MIDI &amp; CV</h1><span class="sub">What talks to what</span><span class="pg"></span></div>
+<div class="figure"><svg viewBox="0 0 1000 430" xmlns="http://www.w3.org/2000/svg" class="wiring">
+<defs>
+<marker id="arr-usb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3c6fd1"/></marker>
+<marker id="arr-trs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8a46c8"/></marker>
+<marker id="arr-cv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#d9822b"/></marker>
+<marker id="arr-aud" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f9a57"/></marker>
+</defs>
+<style>
+.dev{fill:#f6f6f6;stroke:#555;stroke-width:1.4}
+.bt{font:700 13px Helvetica,Arial;text-anchor:middle;fill:#1b1b1b}
+.bs{font:10px Helvetica,Arial;text-anchor:middle;fill:#666}
+.lbl{font:10px Helvetica,Arial;fill:#333}
+.usb{stroke:#3c6fd1;stroke-width:2.2;fill:none}
+.trs{stroke:#8a46c8;stroke-width:2.2;fill:none}
+.cv{stroke:#d9822b;stroke-width:2.2;fill:none}
+.aud{stroke:#2f9a57;stroke-width:2.2;fill:none;stroke-dasharray:6 3}
+.ch{font:10px Helvetica,Arial;fill:#333}
+</style>
+<rect x="20" y="30" width="150" height="52" rx="8" class="dev"/><text x="95.0" y="55.0" class="bt">LinnStrument 200</text><text x="95.0" y="68.0" class="bs">MPE, normal layout</text>
+<rect x="20" y="140" width="150" height="52" rx="8" class="dev"/><text x="95.0" y="165.0" class="bt">grid</text><text x="95.0" y="178.0" class="bs">16×8 OpenGrid</text>
+<rect x="240" y="8" width="150" height="40" rx="8" class="dev"/><text x="315" y="26" class="bt">nanoKEY · nanoPAD2</text><text x="315" y="40" class="bs">Korg, USB</text><path d="M315,48 L315,80" class="usb" marker-end="url(#arr-usb)"/><rect x="240" y="80" width="150" height="52" rx="8" class="dev"/><text x="315.0" y="110.0" class="bt">powered USB hub</text>
+<rect x="450" y="60" width="180" height="92" rx="8" fill="#2d2d2d"/><text x="540.0" y="102.0" style="font:700 14px Helvetica,Arial;fill:#fff;text-anchor:middle">norns</text><text x="540.0" y="118.0" style="font:10px Helvetica,Arial;fill:#ccc;text-anchor:middle">shield XL Pro · sci.lua</text>
+<rect x="240" y="215" width="150" height="52" rx="8" class="dev"/><text x="315.0" y="240.0" class="bt">Electra One Mini</text><text x="315.0" y="253.0" class="bs">USB device → hub</text>
+<rect x="140" y="345" width="160" height="52" rx="8" class="dev"/><text x="220.0" y="370.0" class="bt">Dreadbox Nymphes</text><text x="220.0" y="383.0" class="bs">Mini host Port 1</text>
+<rect x="330" y="345" width="160" height="52" rx="8" class="dev"/><text x="410.0" y="370.0" class="bt">Micromonsta 2</text><text x="410.0" y="383.0" class="bs">Mini host Port 2</text>
+<rect x="720" y="30" width="180" height="56" rx="8" class="dev"/><text x="810.0" y="57.0" class="bt">ZOIA Euroburo</text><text x="810.0" y="70.0" class="bs">one patch: MIDI → CV, crushers</text>
+<rect x="690" y="190" width="130" height="52" rx="8" class="dev"/><text x="755.0" y="215.0" class="bt">Dreadbox Alecto</text><text x="755.0" y="228.0" class="bs">TRIG 1/2 · VELO 1/2</text>
+<rect x="845" y="190" width="140" height="52" rx="8" class="dev"/><text x="915.0" y="215.0" class="bt">Dreadbox Hades</text><text x="915.0" y="228.0" class="bs">DIN MIDI in · ch 2</text>
+<path d="M170,56 L205,56 L205,98 L240,98" class="usb" marker-end="url(#arr-usb)"/><text x="178" y="50" class="lbl" text-anchor="start">USB</text>
+<path d="M170,166 L425,166 L425,135 L450,135" class="usb" marker-end="url(#arr-usb)"/><text x="190" y="160" class="lbl" text-anchor="start">USB (grid)</text>
+<path d="M390,106 L450,106" class="usb" marker-end="url(#arr-usb)"/><text x="405" y="100" class="lbl" text-anchor="start">USB</text>
+<path d="M315,215 L315,132" class="usb" marker-end="url(#arr-usb)"/><text x="322" y="196" class="lbl" text-anchor="start">USB device port</text>
+<path d="M290,267 L290,315 L220,315 L220,345" class="usb" marker-end="url(#arr-usb)"/><text x="160" y="330" class="lbl" text-anchor="start">host Port 1</text>
+<path d="M340,267 L340,315 L410,315 L410,345" class="usb" marker-end="url(#arr-usb)"/><text x="418" y="330" class="lbl" text-anchor="start">host Port 2 (powered hub)</text>
+<path d="M630,90 L720,62" class="trs" marker-end="url(#arr-trs)"/><text x="640" y="60" class="lbl" text-anchor="start">TRS MIDI out</text>
+<text x="636" y="112" class="lbl">ch 10 drums</text><text x="636" y="124" class="lbl">notes 36 / 38</text>
+<rect x="450" y="178" width="150" height="44" rx="8" class="dev"/><text x="525" y="198" class="bt">U2MIDI</text><text x="525" y="212" class="bs">USB → 5-pin DIN</text>
+<path d="M375,132 L375,200 L450,200" class="usb" marker-end="url(#arr-usb)"/>
+<path d="M600,212 L640,212 L640,268 L915,268 L915,242" class="trs" marker-end="url(#arr-trs)"/><text x="700" y="284" class="lbl" text-anchor="start">5-pin DIN · bass, ch 2 (sci track 3)</text>
+<path d="M745,86 L745,190" class="cv" marker-end="url(#arr-cv)"/><text x="717" y="150" class="lbl" text-anchor="start">CV 1</text>
+<path d="M790,86 L790,190" class="cv" marker-end="url(#arr-cv)"/><text x="798" y="150" class="lbl" text-anchor="start">CV 2</text>
+<text x="720" y="20" class="lbl">CV 3 → VELO 1 · CV 4 → VELO 2 (0–5 V)</text>
+<path d="M20,415 L60,415" class="usb"/><text x="68" y="419" class="lbl">USB MIDI</text><path d="M180,415 L220,415" class="trs"/><text x="228" y="419" class="lbl">TRS / DIN MIDI</text><path d="M340,415 L380,415" class="cv"/><text x="388" y="419" class="lbl">CV / trigger</text>
+</svg></div>
+<div class="cols3">
+<div>
+<h2>Install</h2>
+<ol>
+<li>Copy <b>sci.lua</b> to <code>dust/code/sci/sci.lua</code> (maiden, SMB or USB stick).</li>
+<li>On norns: SELECT → <b>sci</b>. The title shows for 2.5 s, then the <b>guide view</b>.</li>
+<li>First run moves any old <code>dust/data/mpecap</code> saves to <code>dust/data/sci</code>.</li>
+</ol>
+<h2>The norns screen</h2>
+<ul>
+<li><b>Guide view</b> (default): page tabs, play status, 4 lines on rows 1–6 of this page, and an alternating row 7/8 line.</li>
+<li>Press any grid key: the bottom line names it for 3 s, e.g. <i>r7 k3 BRAKE (hold)</i>.</li>
+<li>Tap <b>K1</b> alone to switch to the reels view and back.</li>
+</ul>
+<h2>norns settings</h2>
+<ul>
+<li>SYSTEM → DEVICES → MIDI: assign <b>LinnStrument</b>, <b>Electra Controller 1</b> and <b>2</b>, <b>U2MIDI</b>, <b>nanoKEY2</b>, <b>nanoPAD2</b> and the shield's <b>TRS MIDI</b> port.</li>
+<li>SYSTEM → AUDIO: <b>monitor</b> all the way down.</li>
+</ul>
+</div>
+<div>
+<h2>Electra One Mini</h2>
+<p>app.electra.one → Controller → Configuration:</p>
+<ul>
+<li>Router: <b>USB Device Port 1 → USB Host Port 1</b> (Nymphes) and <b>USB Device Port 2 → USB Host Port 2</b> (Micromonsta 2).</li>
+<li>USB Host: <code>Nymphes</code> → Port 1, <code>Micromonsta</code> → Port 2, on a <b>powered hub</b>. (The Mini takes 2 host devices: now full.)</li>
+
+</ul>
+<h2>sci tracks (defaults)</h2>
+<table class="ptab">
+<tr><td>1</td><td><b>Nymphes</b></td><td>Electra Controller 1 · ch 2–7</td></tr>
+<tr><td>2</td><td><b>Micromonsta 2</b></td><td>Electra Controller 2 · ch 2–7: set to its MPE voices</td></tr>
+<tr><td>3</td><td><b>Hades</b></td><td>U2MIDI · ch 2 only (mono)</td></tr>
+<tr><td>4</td><td>spare</td><td>Electra Controller 1</td></tr>
+</table>
+<p>Thru follows the selected track; on a one-channel track (the Hades) your notes move to its channel, without bend. The <b>nanoKEY</b> plays track 3 and the <b>nanoPAD2</b> pads 36/38 play the Alecto lanes (PARAMS → controllers); both go on the USB hub.</p>
+</div>
+<div>
+<h2>Synths</h2>
+<ul>
+<li><b>LinnStrument</b>: normal MPE layout, member channels 2–7, bend range to match the Nymphes.</li>
+<li><b>Nymphes</b>: MPE on (firmware 2.0+). Match sci's <i>synth bend range</i> to it.</li>
+<li><b>Micromonsta 2</b>: MPE, firmware V3 (works on the Mini's USB host). Set track 2's member channels to its voice count.</li>
+<li><b>Hades</b>: MIDI in (5-pin DIN) from the U2MIDI. It listens on all channels until you set its internal DIP switch: <b>switch 3 on = channel 2</b>. Mono, notes C-1 to C4.</li>
+<li><b>ZOIA Euroburo</b>: the patch on the ZOIA page (from the ZOIA build guide). sci's <i>drum out</i> is the shield's TRS port; the ZOIA is TRS Type A.</li>
+</ul>
+<h2>Check it works</h2>
+<ol>
+<li>Track 1 + thru: the Nymphes plays, slides in tune. Track 2: the Micromonsta. Track 3: the Hades.</li>
+<li>DRUM page, add a step, PLAY: the Alecto fires.</li>
+<li>AUDIO page, REC a few bars: it plays back.</li>
+</ol>
+</div>
+</div><div class="pb"></div><div class="mhead"><h1>Wiring: audio</h1><span class="sub">Everything into the L6max, with the ZOIA inline</span><span class="pg"></span></div>
+<div class="figure"><svg viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" class="wiring">
+<defs>
+<marker id="arr-usb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3c6fd1"/></marker>
+<marker id="arr-trs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8a46c8"/></marker>
+<marker id="arr-cv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#d9822b"/></marker>
+<marker id="arr-aud" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f9a57"/></marker>
+</defs>
+<style>
+.dev{fill:#f6f6f6;stroke:#555;stroke-width:1.4}
+.bt{font:700 13px Helvetica,Arial;text-anchor:middle;fill:#1b1b1b}
+.bs{font:10px Helvetica,Arial;text-anchor:middle;fill:#666}
+.lbl{font:10px Helvetica,Arial;fill:#333}
+.usb{stroke:#3c6fd1;stroke-width:2.2;fill:none}
+.trs{stroke:#8a46c8;stroke-width:2.2;fill:none}
+.cv{stroke:#d9822b;stroke-width:2.2;fill:none}
+.aud{stroke:#2f9a57;stroke-width:2.2;fill:none;stroke-dasharray:6 3}
+.ch{font:10px Helvetica,Arial;fill:#333}
+</style>
+<rect x="20" y="20" width="140" height="46" rx="8" class="dev"/><text x="90.0" y="42.0" class="bt">Hades</text><text x="90.0" y="55.0" class="bs">mono, hot (10 Vpp)</text>
+<rect x="175" y="20" width="140" height="46" rx="8" class="dev"/><text x="245.0" y="42.0" class="bt">Alecto</text><text x="245.0" y="55.0" class="bs">MASTER out</text>
+<rect x="330" y="20" width="140" height="46" rx="8" class="dev"/><text x="400.0" y="42.0" class="bt">Nymphes</text><text x="400.0" y="55.0" class="bs">out</text>
+<rect x="485" y="20" width="140" height="46" rx="8" class="dev"/><text x="555.0" y="42.0" class="bt">Micromonsta 2</text><text x="555.0" y="55.0" class="bs">stereo</text>
+<rect x="780" y="40" width="170" height="62" rx="8" fill="#2d2d2d"/><text x="865.0" y="67.0" style="font:700 14px Helvetica,Arial;fill:#fff;text-anchor:middle">norns</text><text x="865.0" y="83.0" style="font:10px Helvetica,Arial;fill:#ccc;text-anchor:middle">in: AUX 1 · out: return</text>
+<rect x="40" y="86" width="290" height="44" rx="8" class="dev"/><text x="185" y="104" class="bt">ZOIA Euroburo (inline)</text><text x="185" y="118" class="bs">L: bass crusher · R: drum crusher</text>
+<rect x="60" y="150" width="600" height="130" rx="10" class="dev"/>
+<text x="360" y="272" class="bt">Zoom LiveTrak L6max</text>
+<rect x="75" y="185" width="66" height="40" rx="4" fill="#fff" stroke="#999"/>
+<text x="108" y="200" class="ch" text-anchor="middle" style="font-weight:700">ch 1</text>
+<text x="108" y="215" class="ch" text-anchor="middle">Hades</text>
+<rect x="147" y="185" width="66" height="40" rx="4" fill="#fff" stroke="#999"/>
+<text x="180" y="200" class="ch" text-anchor="middle" style="font-weight:700">ch 2</text>
+<text x="180" y="215" class="ch" text-anchor="middle">violin / mic</text>
+<rect x="219" y="185" width="66" height="40" rx="4" fill="#fff" stroke="#999"/>
+<text x="252" y="200" class="ch" text-anchor="middle" style="font-weight:700">ch 3</text>
+<text x="252" y="215" class="ch" text-anchor="middle">Alecto</text>
+<rect x="291" y="185" width="66" height="40" rx="4" fill="#fff" stroke="#999"/>
+<text x="324" y="200" class="ch" text-anchor="middle" style="font-weight:700">ch 4</text>
+<text x="324" y="215" class="ch" text-anchor="middle">spare</text>
+<rect x="363" y="185" width="66" height="40" rx="4" fill="#eaf4fb" stroke="#999"/>
+<text x="396" y="200" class="ch" text-anchor="middle" style="font-weight:700">ch 5</text>
+<text x="396" y="215" class="ch" text-anchor="middle">Nymphes</text>
+<rect x="435" y="185" width="66" height="40" rx="4" fill="#eaf4fb" stroke="#999"/>
+<text x="468" y="200" class="ch" text-anchor="middle" style="font-weight:700">ch 6</text>
+<text x="468" y="215" class="ch" text-anchor="middle">Micromonsta 2</text>
+<rect x="507" y="185" width="66" height="40" rx="4" fill="#eaf4fb" stroke="#999"/>
+<text x="540" y="200" class="ch" text-anchor="middle" style="font-weight:700">ch 7</text>
+<text x="540" y="215" class="ch" text-anchor="middle">spare</text>
+<rect x="579" y="185" width="66" height="40" rx="4" fill="#eaf4fb" stroke="#999"/>
+<text x="612" y="200" class="ch" text-anchor="middle" style="font-weight:700">ch 8</text>
+<text x="612" y="215" class="ch" text-anchor="middle">norns return</text>
+<text x="214" y="242" class="lbl" text-anchor="middle">mono 1–4 (combo)</text>
+<text x="502" y="242" class="lbl" text-anchor="middle">stereo 5–8 (line, −20 dB pad)</text>
+<path d="M90,66 L90,86" class="aud" marker-end="url(#arr-aud)"/><text x="84" y="80" class="lbl" text-anchor="end">in L</text>
+<path d="M245,66 L245,86" class="aud" marker-end="url(#arr-aud)"/><text x="239" y="80" class="lbl" text-anchor="end">in R</text>
+<path d="M108,130 L108,185" class="aud" marker-end="url(#arr-aud)"/><text x="114" y="144" class="lbl">out L</text>
+<path d="M252,130 L252,185" class="aud" marker-end="url(#arr-aud)"/><text x="258" y="144" class="lbl">out R</text>
+<path d="M400,66 L400,110 L396,110 L396,185" class="aud" marker-end="url(#arr-aud)"/>
+<path d="M555,66 L555,110 L468,110 L468,185" class="aud" marker-end="url(#arr-aud)"/>
+<path d="M660,170 L740,170 L740,81 L780,81" class="aud" marker-end="url(#arr-aud)"/><text x="748" y="140" class="lbl" text-anchor="start">AUX SEND 1 → norns in</text><text x="748" y="152" class="lbl" text-anchor="start">(mono TS cable)</text>
+<path d="M780,58 L612,58 L612,185" class="aud" marker-end="url(#arr-aud)"/>
+<text x="640" y="50" class="lbl">norns out → ch 8</text>
+<path d="M300,280 L300,330 L220,330" class="aud" marker-end="url(#arr-aud)"/><text x="60" y="350" class="lbl" text-anchor="start">MAIN OUT → speakers / pedals / headphones</text>
+<path d="M20,385 L60,385" class="aud"/><text x="68" y="389" class="lbl">audio</text>
+</svg></div>
+<div class="cols3">
+<div>
+<h2>Channel plan</h2>
+<table class="ptab">
+<tr><td>1</td><td>Hades, via ZOIA out L</td></tr>
+<tr><td>2</td><td>violin / mic (Hi-Z or XLR)</td></tr>
+<tr><td>3</td><td>Alecto MASTER, via ZOIA out R</td></tr>
+<tr><td>4</td><td>spare</td></tr>
+<tr><td>5</td><td>Nymphes</td></tr>
+<tr><td>6</td><td>Micromonsta 2</td></tr>
+<tr><td>7</td><td>spare</td></tr>
+<tr><td>8</td><td>norns return (sci loops)</td></tr>
+</table>
+<p>The ZOIA sits inline, as in the ZOIA build guide: each synth has its own crusher, and the mix knob on each chain takes it fully clean. Use the −20 dB pad on 5–8 for hot sources.</p>
+</div>
+<div>
+<h2>AUX 1: what sci records</h2>
+<ul>
+<li>AUX SEND 1 → norns input, <b>mono TS</b> cable into the left input.</li>
+<li>Press <b>AUX1</b>, raise the synths you want to loop or print (Nymphes, Micromonsta, Hades…).</li>
+<li>Keep <b>ch 8 (norns return)</b> at 0, or it feeds back.</li>
+<li>Ch 1 and 3 arrive already crushed, so sci records the crushed sound; set the ZOIA mix to clean to record them dry.</li>
+</ul>
+<h2>AUX 2</h2>
+<ul>
+<li>Free. The ZOIA no longer needs a send; it is patched inline between the Hades/Alecto and ch 1/3.</li>
+</ul>
+</div>
+<div>
+<h2>Levels</h2>
+<ul>
+<li>The Hades out is hot (10 Vpp): start the ZOIA's audio in L pad at <b>−12 dB</b>, move to −6 or 0 if it's quiet.</li>
+<li>Hades cable: 6.3 mm to 3.5 mm mono. ZOIA outs: 3.5 mm to 6.3 mm mono into ch 1 and 3.</li>
+<li>norns SYSTEM → AUDIO: monitor all the way down.</li>
+</ul>
+<h2>Pedals</h2>
+<p>Your Komorebi and Darkness can stay on the main out as before, so they process the whole mix.</p>
+</div>
+</div><div class="pb"></div><div class="mhead"><h1>ZOIA patch recipe</h1><span class="sub">The same patch as the ZOIA build guide (Layout A: dynamic kit), in short</span><span class="pg"></span></div>
+<div class="cols3">
+<div>
+<h2>Page 1 · MIDI to Alecto</h2>
+<ol>
+<li><b>Midi Notes In</b>: channel 10, 1 output, priority newest, velocity output on, trigger pulse on, low and high note <b>C1 (36)</b>.</li>
+<li>Its <i>trigger out</i> → <b>CV out 1</b> → Alecto <b>TRIG 1</b>. Its <i>velocity out</i> → <b>CV out 3</b> → Alecto <b>VELO 1</b>.</li>
+<li>A second <b>Midi Notes In</b> on the next row, the same but low and high note <b>D1 (38)</b>: trigger → <b>CV out 2</b> → <b>TRIG 2</b>, velocity → <b>CV out 4</b> → <b>VELO 2</b>.</li>
+<li>Each CV out: Edit → out range <b>0 to 5 V</b>, in range 0 to 1. Save.</li>
+</ol>
+<p class="note">Plugging into a TRIG jack stops that voice's own sequencer: sci is the sequencer now. VELO is at maximum with nothing plugged in, so velocity can only turn a voice down. If a pad doesn't fire, try the notes an octave up or down; if hits are missed, use <i>gate out</i> instead of trigger out.</p>
+</div>
+<div>
+<h2>Page 2 · crushers</h2>
+<ol>
+<li>Top row: <b>Bit Crusher</b> → <b>Aliaser</b> (the ZOIA's decimator) → <b>Audio Balance</b> (mono) in 2.</li>
+<li><b>Audio in L</b> → Bit Crusher in, and → Audio Balance in 1 (dry). Audio Balance out → <b>Audio out L</b>.</li>
+<li>Second row: the same chain on <b>audio in R</b> → <b>audio out R</b> for the drums.</li>
+<li>Audio in L pad <b>−12 dB</b> (the Hades is hot). Mix: bass about halfway, drums further toward crushed.</li>
+</ol>
+<h2>Starting settings</h2>
+<table class="ptab">
+<tr><th></th><th>Bass (L)</th><th>Drums (R)</th></tr>
+<tr><td>crushed bits</td><td>~20, up till it growls</td><td>~22</td></tr>
+<tr><td>alias amount</td><td>low</td><td>higher</td></tr>
+<tr><td>mix</td><td>halfway</td><td>toward crushed</td></tr>
+</table>
+</div>
+<div>
+<h2>Move it from the nanoPAD2</h2>
+<ul>
+<li>Add <b>Midi CC In</b> modules on channel 10 for the X-Y pad's CCs (often CC 1 and 2; check the Korg Kontrol Editor) and connect them to crushed bits, alias amount or mix.</li>
+<li>sci passes the nanoPAD2's CCs to the ZOIA on the drum channel, and DRUM page REC records the moves with the hits.</li>
+</ul>
+<h2>At a glance</h2>
+<table class="ptab">
+<tr><td>ch 10 note 36</td><td>CV 1 → TRIG 1, CV 3 → VELO 1</td></tr>
+<tr><td>ch 10 note 38</td><td>CV 2 → TRIG 2, CV 4 → VELO 2</td></tr>
+<tr><td>ch 10 CCs</td><td>crusher controls</td></tr>
+<tr><td>audio in L / R</td><td>Hades / Alecto MASTER</td></tr>
+<tr><td>audio out L / R</td><td>L6max ch 1 / ch 3</td></tr>
+</table>
+<p class="note">The Hades does <b>not</b> go through the ZOIA's MIDI: the ZOIA manual describes no MIDI thru, so it has its own feed from the U2MIDI. Full build, test steps and Layouts B and C: the ZOIA build guide and the CV guide.</p>
+</div>
+</div><div class="pb"></div><div class="mhead"><h1>Quick start</h1><span class="sub">Your first loops, in order</span><span class="pg"></span></div>
+<div class="cols3">
+<div>
+<h2>1 · A MIDI loop</h2>
+<ol>
+<li>Row 8 key 5: select <b>track 1</b>. Row 8 key 12: loop length <b>4 bars</b>.</li>
+<li>Press <b>REC</b> (row 8 key 1, or K2). Playback starts on the next beat and REC blinks.</li>
+<li>Play the LinnStrument. Each note joins the loop when you lift your finger, with its bend, slide and pressure.</li>
+<li>Keep playing to overdub. <b>UNDO</b> (row 8 key 3) removes the last pass.</li>
+<li>Press REC again to stop recording. The loop keeps playing.</li>
+</ol>
+<h2>2 · Edit it</h2>
+<ul>
+<li>On the MIDI page, notes appear on rows 1–6. K1+E3 scrolls pitch.</li>
+<li>Tap a note to delete it, tap an empty key to add one, hold a note and tap further right to change its length.</li>
+<li>Hold a key and play the LinnStrument to step-record a note there.</li>
+</ul>
+</div>
+<div>
+<h2>3 · Mangle the tape</h2>
+<ul>
+<li>Row 7 key 3 <b>BRAKE</b> (hold): the loop slows to a stop with a pitch dive. Release to spin back up.</li>
+<li>Row 7 key 1 <b>REVERSE</b>: every note plays backwards, gesture and all.</li>
+<li>Row 7 keys 9–16: speeds from ¼× to 2×. Key 5 <b>RESYNC</b> snaps back to 1× on the beat.</li>
+</ul>
+<h2>4 · An audio loop</h2>
+<ol>
+<li>Row 7 key 8 cycles pages. Tabs across the top of the norns screen show which page the grid is on, and the page name flashes large for a moment when you switch. Go to <b>LOOP</b>.</li>
+<li>Track 2's big button (cols 6–7, rows 3–4): press = <b>REC</b>, again = <b>DUB</b>, again = <b>PLAY</b>.</li>
+<li>Or use <b>PRINT</b> to record track 1's MIDI, as played by the Nymphes, into track 1's audio for one lap. Then change the patch and play something new on top.</li>
+</ol>
+</div>
+<div>
+<h2>5 · A beat</h2>
+<ol>
+<li>Go to the <b>DRUM</b> page. Tap steps on row 1 (Alecto voice 1) and row 4 (voice 2).</li>
+<li>Hold a step about ½ s for an accent.</li>
+<li>Give lane 2 a different length (row 5) or clock (row 6) for polymeter.</li><li>Or press <b>REC</b> (row 8 key 1) and play the <b>nanoPAD2</b>: each hit lands on the nearest step, hard hits become accents.</li>
+</ol>
+<h2>6 · Perform</h2>
+<ul>
+<li>QUANT page row 1: launch quantize to <b>bar</b>, so starts, stops and mutes land on the next bar.</li>
+<li>QUANT row 6: tape drives <b>audio only</b>. Your MIDI keeps playing the Nymphes in time while you brake and reverse the audio.</li>
+</ul>
+<h2>7 · Save</h2>
+<ul>
+<li>SAVE page: pick a slot on row 1, hold <b>SAVE</b> (row 2 key 1) for 1 s.</li>
+</ul>
+</div>
+</div><div class="pb"></div>
+
+<div class="mhead"><h1>Grid reference</h1><span class="sub">MIDI &amp; AUDIO pages, plus rows 7–8 shared by every page · LinnStrument → norns → Electra Mini Port 1 → Nymphes</span><span class="pg"></span></div>
+
+<div class="pages">
+<div>
+<div class="cap">MIDI PAGE: rows 1–6 edit the selected track</div>
+<div class="grid">
+  <div></div>
+  <div class="cl">1</div><div class="cl">2</div><div class="cl">3</div><div class="cl">4</div><div class="cl">5</div><div class="cl">6</div><div class="cl">7</div><div class="cl">8</div><div class="cl">9</div><div class="cl">10</div><div class="cl">11</div><div class="cl">12</div><div class="cl">13</div><div class="cl">14</div><div class="cl">15</div><div class="cl">16</div>
+  <div class="rl">1–6</div>
+  <div class="k wide" style="height:66px"><b>NOTE EDITOR</b><br>column = 1/16 of loop · row = semitone (C rows glow)<br>bright = note start, dim = length<br>tap empty = add · tap note = delete<br>hold + tap further right = length · hold + play LinnStrument = step record</div>
+</div>
+</div>
+
+<div>
+<div class="cap">AUDIO PAGE: one row per track, controls below</div>
+<div class="grid">
+  <div></div>
+  <div class="cl">1</div><div class="cl">2</div><div class="cl">3</div><div class="cl">4</div><div class="cl">5</div><div class="cl">6</div><div class="cl">7</div><div class="cl">8</div><div class="cl">9</div><div class="cl">10</div><div class="cl">11</div><div class="cl">12</div><div class="cl">13</div><div class="cl">14</div><div class="cl">15</div><div class="cl">16</div>
+  <div class="rl">1</div><div class="k trk" style="height:13px">track 1 audio (playhead) · tap to select</div>
+  <div class="rl">2</div><div class="k trk" style="height:13px">track 2</div>
+  <div class="rl">3</div><div class="k trk" style="height:13px">track 3</div>
+  <div class="rl">4</div><div class="k trk" style="height:13px">track 4</div>
+  <div class="rl">5</div>
+  <div class="k au">REC</div><div class="k au">AUD on</div><div class="k au">MIDI on</div><div class="k au">PRINT</div>
+  <div class="k au">REC</div><div class="k au">AUD on</div><div class="k au">MIDI on</div><div class="k au">PRINT</div>
+  <div class="k au">REC</div><div class="k au">AUD on</div><div class="k au">MIDI on</div><div class="k au">PRINT</div>
+  <div class="k au">REC</div><div class="k au">AUD on</div><div class="k au">MIDI on</div><div class="k au">PRINT</div>
+  <div class="rl">6</div>
+  <div class="k lv">25%</div><div class="k lv">50%</div><div class="k lv">75%</div><div class="k lv">100%</div>
+  <div class="k lv">25%</div><div class="k lv">50%</div><div class="k lv">75%</div><div class="k lv">100%</div>
+  <div class="k lv">25%</div><div class="k lv">50%</div><div class="k lv">75%</div><div class="k lv">100%</div>
+  <div class="k lv">25%</div><div class="k lv">50%</div><div class="k lv">75%</div><div class="k lv">100%</div>
+  <div></div><div class="cl" style="grid-column:span 4">track 1</div><div class="cl" style="grid-column:span 4">track 2</div><div class="cl" style="grid-column:span 4">track 3</div><div class="cl" style="grid-column:span 4">track 4</div>
+</div>
+</div>
+</div>
+
+<div class="cap" style="margin-top:6px">BOTH PAGES: rows 7–8</div>
+<div class="grid">
+  <div class="rl">7 tape</div>
+  <div class="k tape">REVERSE</div><div class="k off"></div><div class="k tape">BRAKE hold</div><div class="k off"></div>
+  <div class="k tape">RESYNC</div><div class="k off"></div><div class="k tape">FLUTTER</div><div class="k page">PAGE (cycles 6 pages)</div>
+  <div class="k spd">¼×</div><div class="k spd">½×</div><div class="k spd">⅔×</div><div class="k spd">¾×</div>
+  <div class="k spd1">1×</div><div class="k spd">4⁄3×</div><div class="k spd">3⁄2×</div><div class="k spd">2×</div>
+  <div class="rl">8 main</div>
+  <div class="k tr">REC</div><div class="k tr">PLAY</div><div class="k tr">UNDO</div><div class="k danger">CLEAR hold 1s</div>
+  <div class="k sel">TRACK 1</div><div class="k sel">TRACK 2</div><div class="k sel">TRACK 3</div><div class="k sel">TRACK 4</div>
+  <div class="k len">1 bar</div><div class="k len">2</div><div class="k len">3</div><div class="k len">4</div>
+  <div class="k len">5</div><div class="k len">6</div><div class="k len">7</div><div class="k len">8 bars</div>
+</div>
+
+<div class="cols">
+<div>
+<h2>Main row (8): acts on the selected track</h2>
+<table>
+<tr><td>REC</td><td>MIDI page: record MPE into the track. AUDIO page: audio record/overdub. LOOP page: same as the track's big button. Starts playback if stopped.</td></tr>
+<tr><td>PLAY</td><td>Play/stop, starts on the next beat.</td></tr>
+<tr><td>UNDO</td><td>MIDI page: steps back through passes, grid edits and clears. AUDIO/LOOP pages: undo the last recording, print or clear; press again to redo.</td></tr>
+<tr><td>CLEAR</td><td>Hold 1 s. Clears the selected track's MIDI or audio, depending on the page. Undo brings it back.</td></tr>
+<tr><td>TRACK 1–4</td><td>Select track. Bright = selected, medium = has content.</td></tr>
+<tr><td>1–8 bars</td><td>Loop length, shared by all tracks and the audio.</td></tr>
+</table>
+</div>
+<div>
+<h2>Audio page, per track</h2>
+<table>
+<tr><td>REC</td><td>Record/overdub from the norns inputs. Blinks while recording.</td></tr>
+<tr><td>AUD on</td><td>Audio loop on/off (lit = audible).</td></tr>
+<tr><td>MIDI on</td><td>MIDI loop on/off (lit = playing to the synth).</td></tr>
+<tr><td>PRINT</td><td>Records the track's MIDI loop, played on the synth, into its audio loop for exactly one lap, starting on the next lap. Then mutes the MIDI so you can change the patch.</td></tr>
+<tr><td>Level</td><td>25 / 50 / 75 / 100%.</td></tr>
+</table>
+<h2>Tape row (7)</h2>
+<div>Reverse, brake, varispeed and flutter move the MIDI <b>and</b> the audio loops together, like one multitrack tape. Turn <b>audio follows tape</b> off per track to keep a loop steady. RESYNC = 1× forward, snapped to the clock.</div>
+</div>
+<div>
+<h2>norns</h2>
+<table>
+<tr><td>K1 (tap)</td><td>Guide / reels view</td></tr><tr><td>K2 / K3</td><td>Rec (page-aware) / play</td></tr>
+<tr><td>K1+K2 / K1+K3</td><td>Undo / resync</td></tr>
+<tr><td>E1 / E2 / E3</td><td>Flutter / loop length / speed</td></tr>
+<tr><td>K1+E3</td><td>Scroll editor pitch</td></tr>
+</table>
+<h2>PARAMS</h2>
+<table>
+<tr><td>track 1–4</td><td>synth out, member channels (default Electra 1, ch 2–7), audio follows tape</td></tr>
+<tr><td>audio</td><td>overdub keeps (1 = full), mute MIDI after print</td></tr>
+<tr><td>shared</td><td>LinnStrument in, thru, bend ranges, grid note settings, tape settings</td></tr>
+</table>
+</div>
+</div>
+
+<div class="pb"></div>
+<div class="mhead"><h1>LOOP page</h1><span class="sub">LOOP page: RC-505-style control of the same 4 audio loops</span><span class="pg"></span></div>
+<div class="cap" style="margin-top:6px">LOOP PAGE, rows 1–6: one 4-column strip per track (rows 7–8 unchanged)</div>
+<div class="grid">
+  <div></div><div class="cl">1</div><div class="cl">2</div><div class="cl">3</div><div class="cl">4</div><div class="cl">5</div><div class="cl">6</div><div class="cl">7</div><div class="cl">8</div><div class="cl">9</div><div class="cl">10</div><div class="cl">11</div><div class="cl">12</div><div class="cl">13</div><div class="cl">14</div><div class="cl">15</div><div class="cl">16</div>
+<div class="rl">1</div><div class="k lv">fader</div><div class="k ring">ring</div><div class="k ring">ring</div><div class="k au">FX</div><div class="k lv">fader</div><div class="k ring">ring</div><div class="k ring">ring</div><div class="k au">FX</div><div class="k lv">fader</div><div class="k ring">ring</div><div class="k ring">ring</div><div class="k au">FX</div><div class="k lv">fader</div><div class="k ring">ring</div><div class="k ring">ring</div><div class="k au">FX</div>
+<div class="rl">2</div><div class="k lv"></div><div class="k ring">ring</div><div class="k ring">ring</div><div class="k au">REV</div><div class="k lv"></div><div class="k ring">ring</div><div class="k ring">ring</div><div class="k au">REV</div><div class="k lv"></div><div class="k ring">ring</div><div class="k ring">ring</div><div class="k au">REV</div><div class="k lv"></div><div class="k ring">ring</div><div class="k ring">ring</div><div class="k au">REV</div>
+<div class="rl">3</div><div class="k lv"></div><div class="k big">REC›DUB ›PLAY</div><div class="k big">REC›DUB ›PLAY</div><div class="k au">MIDI on</div><div class="k lv"></div><div class="k big">REC›DUB ›PLAY</div><div class="k big">REC›DUB ›PLAY</div><div class="k au">MIDI on</div><div class="k lv"></div><div class="k big">REC›DUB ›PLAY</div><div class="k big">REC›DUB ›PLAY</div><div class="k au">MIDI on</div><div class="k lv"></div><div class="k big">REC›DUB ›PLAY</div><div class="k big">REC›DUB ›PLAY</div><div class="k au">MIDI on</div>
+<div class="rl">4</div><div class="k lv"></div><div class="k big">REC›DUB ›PLAY</div><div class="k big">REC›DUB ›PLAY</div><div class="k au">PRINT</div><div class="k lv"></div><div class="k big">REC›DUB ›PLAY</div><div class="k big">REC›DUB ›PLAY</div><div class="k au">PRINT</div><div class="k lv"></div><div class="k big">REC›DUB ›PLAY</div><div class="k big">REC›DUB ›PLAY</div><div class="k au">PRINT</div><div class="k lv"></div><div class="k big">REC›DUB ›PLAY</div><div class="k big">REC›DUB ›PLAY</div><div class="k au">PRINT</div>
+<div class="rl">5</div><div class="k lv"></div><div class="k stop">STOP hold=clr</div><div class="k stop">STOP hold=clr</div><div class="k au">FOLLOW</div><div class="k lv"></div><div class="k stop">STOP hold=clr</div><div class="k stop">STOP hold=clr</div><div class="k au">FOLLOW</div><div class="k lv"></div><div class="k stop">STOP hold=clr</div><div class="k stop">STOP hold=clr</div><div class="k au">FOLLOW</div><div class="k lv"></div><div class="k stop">STOP hold=clr</div><div class="k stop">STOP hold=clr</div><div class="k au">FOLLOW</div>
+<div class="rl">6</div><div class="k lv"></div><div class="k stop">STOP hold=clr</div><div class="k stop">STOP hold=clr</div><div class="k au">FADE</div><div class="k lv"></div><div class="k stop">STOP hold=clr</div><div class="k stop">STOP hold=clr</div><div class="k au">FADE</div><div class="k lv"></div><div class="k stop">STOP hold=clr</div><div class="k stop">STOP hold=clr</div><div class="k au">FADE</div><div class="k lv"></div><div class="k stop">STOP hold=clr</div><div class="k stop">STOP hold=clr</div><div class="k au">FADE</div>
+  <div></div><div class="cl" style="grid-column:span 4">track 1</div><div class="cl" style="grid-column:span 4">track 2</div><div class="cl" style="grid-column:span 4">track 3</div><div class="cl" style="grid-column:span 4">track 4</div>
+</div>
+<div class="cols">
+<div>
+<h2>Strip</h2>
+<table>
+<tr><td>Fader</td><td>Column 1 of each strip. Tap a row to set the level: top = full, bottom = quietest.</td></tr>
+<tr><td>Ring</td><td>Rows 1–2: one cell lights as the loop goes round, clockwise, like the ring around a 505 button.</td></tr>
+<tr><td>Big button</td><td>Empty → <b>REC</b> → <b>DUB</b> → <b>PLAY</b> → DUB → PLAY… Stopped → PLAY. REC blinks fast, DUB blinks slow, PLAY is solid. Starts the transport if needed.</td></tr>
+<tr><td>STOP</td><td>Press: track goes silent but keeps its place, so it comes back in time. Hold 1 s: clear (undo brings it back).</td></tr>
+</table>
+</div>
+<div>
+<h2>Column 4 of each strip</h2>
+<table>
+<tr><td>FX</td><td>Tap: low-pass filter on/off. Hold + E2 = cutoff, hold + E3 = resonance (screen shows values).</td></tr>
+<tr><td>REV</td><td>Reverse this track only (on top of the tape direction).</td></tr>
+<tr><td>MIDI on</td><td>The track's MIDI loop on/off.</td></tr>
+<tr><td>PRINT</td><td>Print the track's MIDI to its audio for one lap.</td></tr>
+<tr><td>FOLLOW</td><td>Audio follows tape speed/brake/reverse.</td></tr>
+<tr><td>FADE</td><td>Stop and start fade out and in (LOOP fade time) instead of cutting.</td></tr>
+</table>
+</div>
+<div>
+<h2>Main row &amp; PARAMS</h2>
+<table>
+<tr><td>REC (row 8)</td><td>Big button of the selected track.</td></tr>
+<tr><td>UNDO</td><td>Undo/redo the selected track's last pass.</td></tr>
+<tr><td>CLEAR</td><td>Hold 1 s, clears the selected track's audio.</td></tr>
+<tr><td>PLAY</td><td>All start/stop.</td></tr>
+<tr><td>LOOP rec action</td><td>REC›DUB (505 default) or REC›PLAY.</td></tr>
+<tr><td>LOOP fade time</td><td>Length of FADE in/out.</td></tr>
+<tr><td>track 1–4</td><td>fx cutoff, fx resonance</td></tr>
+</table>
+<div style="margin-top:6px;color:#555">The AUDIO and LOOP pages control the same four loops, so you can switch between them mid-jam.</div>
+</div>
+</div>
+
+<div class="pb"></div>
+<div class="mhead"><h1>QUANT page</h1><span class="sub">QUANT page: live performance launcher, quantize, and splitting the tape</span><span class="pg"></span></div>
+<div class="cap" style="margin-top:6px">QUANT PAGE, rows 1–6 (rows 7–8 unchanged)</div>
+<div class="grid">
+  <div></div><div class="cl">1</div><div class="cl">2</div><div class="cl">3</div><div class="cl">4</div><div class="cl">5</div><div class="cl">6</div><div class="cl">7</div><div class="cl">8</div><div class="cl">9</div><div class="cl">10</div><div class="cl">11</div><div class="cl">12</div><div class="cl">13</div><div class="cl">14</div><div class="cl">15</div><div class="cl">16</div>
+  <div class="rl">1 launch</div><div class="k tape">off</div><div class="k tape">beat</div><div class="k tape">bar</div><div class="k tape">2 bars</div><div class="k tape">loop</div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k danger">wait blink</div><div class="rl">2 trk1</div><div class="k spd">q off</div><div class="k spd">1/4</div><div class="k spd">1/8</div><div class="k spd">1/16</div><div class="k spd">1/32</div><div class="k off"></div><div class="k len">25%</div><div class="k len">50%</div><div class="k len">75%</div><div class="k len">100%</div><div class="k off"></div><div class="k sel">APPLY</div><div class="k off"></div><div class="k au">MIDI on</div><div class="k au">AUD on</div><div class="k big">REC DUB PLAY</div><div class="rl">3 trk2</div><div class="k spd">q off</div><div class="k spd">1/4</div><div class="k spd">1/8</div><div class="k spd">1/16</div><div class="k spd">1/32</div><div class="k off"></div><div class="k len">25%</div><div class="k len">50%</div><div class="k len">75%</div><div class="k len">100%</div><div class="k off"></div><div class="k sel">APPLY</div><div class="k off"></div><div class="k au">MIDI on</div><div class="k au">AUD on</div><div class="k big">REC DUB PLAY</div><div class="rl">4 trk3</div><div class="k spd">q off</div><div class="k spd">1/4</div><div class="k spd">1/8</div><div class="k spd">1/16</div><div class="k spd">1/32</div><div class="k off"></div><div class="k len">25%</div><div class="k len">50%</div><div class="k len">75%</div><div class="k len">100%</div><div class="k off"></div><div class="k sel">APPLY</div><div class="k off"></div><div class="k au">MIDI on</div><div class="k au">AUD on</div><div class="k big">REC DUB PLAY</div><div class="rl">5 trk4</div><div class="k spd">q off</div><div class="k spd">1/4</div><div class="k spd">1/8</div><div class="k spd">1/16</div><div class="k spd">1/32</div><div class="k off"></div><div class="k len">25%</div><div class="k len">50%</div><div class="k len">75%</div><div class="k len">100%</div><div class="k off"></div><div class="k sel">APPLY</div><div class="k off"></div><div class="k au">MIDI on</div><div class="k au">AUD on</div><div class="k big">REC DUB PLAY</div><div class="rl">6 tape</div><div class="k tape">both</div><div class="k tape">MIDI only</div><div class="k tape">audio only</div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div>
+</div>
+<div class="cols">
+<div>
+<h2>Launch quantize (row 1)</h2>
+<table>
+<tr><td>off / beat / bar / 2 bars / loop</td><td>Performance actions wait for the next boundary on the clock: audio REC/DUB/PLAY, STOP, MIDI on/off, audio on/off, and MIDI REC on row 8.</td></tr>
+<tr><td>Waiting</td><td>The key you pressed blinks, and row 1 key 16 flashes. Press the same key again to cancel.</td></tr>
+<tr><td>Not covered</td><td>Edits, undo, clear, tape moves and FX stay immediate, so mangling is always live.</td></tr>
+</table>
+</div>
+<div>
+<h2>Per track (rows 2–5)</h2>
+<table>
+<tr><td>Note grid</td><td>Snaps the track's MIDI note starts while they play. Your recording isn't changed, so turn it off any time.</td></tr>
+<tr><td>Strength</td><td>How far notes move toward the grid. 50% tightens without going robotic.</td></tr>
+<tr><td>APPLY</td><td>Makes the quantize permanent. Undo on the MIDI page reverts it.</td></tr>
+<tr><td>MIDI on / AUD on / big</td><td>Quick launch keys for each track, all quantized.</td></tr>
+</table>
+</div>
+<div>
+<h2>Tape drives (row 6)</h2>
+<table>
+<tr><td>both</td><td>One tape: brake, varispeed, reverse and flutter move the MIDI and the audio together.</td></tr>
+<tr><td>MIDI only</td><td>Mangle the synth parts with the tape while audio loops play steady.</td></tr>
+<tr><td>audio only</td><td>Mangle the audio loops with the tape while the MIDI keeps playing your synths in time.</td></tr>
+</table>
+<div style="margin-top:6px;color:#555">Per-track audio mangling (reverse, filter FX, fades, follow) lives on the LOOP page.</div>
+</div>
+</div>
+
+<div class="pb"></div>
+<div class="mhead"><h1>DRUM page</h1><span class="sub">DRUM page: 2 trigger lanes for the Alecto · norns TRS MIDI out → Euroburo → CV 1/2 → Alecto voice 1/2 triggers</span><span class="pg"></span></div>
+<div class="cap" style="margin-top:6px">DRUM PAGE, rows 1–6 (rows 7–8 unchanged)</div>
+<div class="grid">
+  <div></div><div class="cl">1</div><div class="cl">2</div><div class="cl">3</div><div class="cl">4</div><div class="cl">5</div><div class="cl">6</div><div class="cl">7</div><div class="cl">8</div><div class="cl">9</div><div class="cl">10</div><div class="cl">11</div><div class="cl">12</div><div class="cl">13</div><div class="cl">14</div><div class="cl">15</div><div class="cl">16</div>
+  <div class="rl">1 L1 steps</div><div class="k big">step 1</div><div class="k au">step 2</div><div class="k au">step 3</div><div class="k au">step 4</div><div class="k big">step 5</div><div class="k au">step 6</div><div class="k au">step 7</div><div class="k au">step 8</div><div class="k big">step 9</div><div class="k au">step 10</div><div class="k au">step 11</div><div class="k au">step 12</div><div class="k big">step 13</div><div class="k au">step 14</div><div class="k au">step 15</div><div class="k au">step 16</div><div class="rl">2 L1 length</div><div class="k len">1</div><div class="k len">2</div><div class="k len">3</div><div class="k len">4</div><div class="k len">5</div><div class="k len">6</div><div class="k len">7</div><div class="k len">8</div><div class="k len">9</div><div class="k len">10</div><div class="k len">11</div><div class="k len">12</div><div class="k len">13</div><div class="k len">14</div><div class="k len">15</div><div class="k len">16</div><div class="rl">3 L1 clock</div><div class="k spd">1/32</div><div class="k spd">1/16</div><div class="k spd">1/16T</div><div class="k spd">1/8</div><div class="k spd">1/8T</div><div class="k spd">1/4</div><div class="k spd">1/2</div><div class="k spd">bar</div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k sel">◀ shift</div><div class="k sel">shift ▶</div><div class="k off"></div><div class="k danger">MUTE</div><div class="rl">4 L2 steps</div><div class="k big">step 1</div><div class="k au">step 2</div><div class="k au">step 3</div><div class="k au">step 4</div><div class="k big">step 5</div><div class="k au">step 6</div><div class="k au">step 7</div><div class="k au">step 8</div><div class="k big">step 9</div><div class="k au">step 10</div><div class="k au">step 11</div><div class="k au">step 12</div><div class="k big">step 13</div><div class="k au">step 14</div><div class="k au">step 15</div><div class="k au">step 16</div><div class="rl">5 L2 length</div><div class="k len">1</div><div class="k len">2</div><div class="k len">3</div><div class="k len">4</div><div class="k len">5</div><div class="k len">6</div><div class="k len">7</div><div class="k len">8</div><div class="k len">9</div><div class="k len">10</div><div class="k len">11</div><div class="k len">12</div><div class="k len">13</div><div class="k len">14</div><div class="k len">15</div><div class="k len">16</div><div class="rl">6 L2 clock</div><div class="k spd">1/32</div><div class="k spd">1/16</div><div class="k spd">1/16T</div><div class="k spd">1/8</div><div class="k spd">1/8T</div><div class="k spd">1/4</div><div class="k spd">1/2</div><div class="k spd">bar</div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k sel">◀ shift</div><div class="k sel">shift ▶</div><div class="k off"></div><div class="k danger">MUTE</div>
+</div>
+<div class="cols">
+<div>
+<h2>Steps (rows 1 and 4)</h2>
+<table>
+<tr><td>Tap</td><td>Step on/off.</td></tr>
+<tr><td>Hold ~½ s</td><td>Accent on/off (also turns the step on). Bright = accent, medium = normal, dark = off.</td></tr>
+<tr><td>Moving bar</td><td>Each lane's current step lights its whole column at the lowest brightness, across that lane's 3 rows: a bar of light sweeping left to right. Lanes with different lengths or clocks sweep at their own pace. Steps that are on flash full as the bar passes.</td></tr>
+</table>
+<h2>Length &amp; clock (rows 2–3, 5–6)</h2>
+<table>
+<tr><td>Length</td><td>Tap 1–16. Steps past the length go dark.</td></tr>
+<tr><td>Clock</td><td>1/32 to 1 bar per step, including triplets. Different lengths or clocks per lane = polymeter, like the Alecto's own sequencer.</td></tr>
+<tr><td>Shift</td><td>Rotate the lane one step left/right within its length.</td></tr>
+<tr><td>MUTE</td><td>Lit = playing. Uses launch quantize (blinks while waiting).</td></tr>
+</table>
+</div>
+<div>
+<h2>Main row on this page</h2>
+<table>
+<tr><td>PLAY</td><td>Drums start with the transport, step 1 on the downbeat, and stop with it.</td></tr>
+<tr><td>UNDO</td><td>Steps back through drum edits: steps, accents, length, clock, shift, clear.</td></tr>
+<tr><td>CLEAR</td><td>Hold 1 s: clears both lanes' steps. Undo brings them back.</td></tr>
+<tr><td>REC</td><td>Records the <b>nanoPAD2</b> into the lanes: each hit goes to the nearest step of its lane, and each step replays at the velocity you hit it (hits at or above <i>accent from velocity</i>, 100, light as accents). X-Y pad moves are recorded too. A hit just before a step plays once, not twice. UNDO removes the whole pass.</td></tr>
+</table>
+<h2>Timing</h2>
+<div>Drums run on the clock, not the tape. Brake and varispeed bend the loops, but the beat holds.</div>
+</div>
+<div>
+<h2>PARAMS: drums (Alecto)</h2>
+<table>
+<tr><td>drum out</td><td>The MIDI device for the norns shield's TRS out (separate from the Nymphes).</td></tr>
+<tr><td>voice 1 / 2 channel</td><td>10 / 10</td></tr>
+<tr><td>voice 1 / 2 note</td><td>36 / 38. Match the ZOIA patch.</td></tr>
+<tr><td>velocity / accent</td><td>80 / 127 for grid steps. ZOIA velocity → CV out 3/4 → VELO 1/2.</td></tr>
+<tr><td>trigger length</td><td>15 ms. Lengthen it if the Alecto misses hits.</td></tr>
+</table>
+<div style="margin-top:6px;color:#555">Saved in save slots: steps, accents, recorded velocities and X-Y moves, lengths, clocks and mutes. Tapping a recorded step on the grid sets it back to 80/127.</div>
+</div>
+</div>
+<div class="pb"></div>
+<div class="mhead"><h1>SAVE page</h1><span class="sub">SAVE page: 16 slots for MIDI + audio loops, saved to dust/data/sci</span><span class="pg"></span></div>
+<div class="cap" style="margin-top:6px">SAVE PAGE, rows 1–6 (rows 7–8 unchanged)</div>
+<div class="grid">
+  <div></div><div class="cl">1</div><div class="cl">2</div><div class="cl">3</div><div class="cl">4</div><div class="cl">5</div><div class="cl">6</div><div class="cl">7</div><div class="cl">8</div><div class="cl">9</div><div class="cl">10</div><div class="cl">11</div><div class="cl">12</div><div class="cl">13</div><div class="cl">14</div><div class="cl">15</div><div class="cl">16</div>
+  <div class="rl">1 slots</div><div class="k sel">slot 1</div><div class="k sel">slot 2</div><div class="k sel">slot 3</div><div class="k sel">slot 4</div><div class="k sel">slot 5</div><div class="k sel">slot 6</div><div class="k sel">slot 7</div><div class="k sel">slot 8</div><div class="k sel">slot 9</div><div class="k sel">slot 10</div><div class="k sel">slot 11</div><div class="k sel">slot 12</div><div class="k sel">slot 13</div><div class="k sel">slot 14</div><div class="k sel">slot 15</div><div class="k sel">slot 16</div><div class="rl">2</div><div class="k tr">SAVE hold 1s</div><div class="k off"></div><div class="k au">LOAD all</div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k danger">DELETE hold 2s</div><div class="rl">3 trk1</div><div class="k au">load MIDI</div><div class="k au">load audio</div><div class="k off"></div><div class="k lv">has MIDI</div><div class="k lv">has audio</div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="rl">4 trk2</div><div class="k au">load MIDI</div><div class="k au">load audio</div><div class="k off"></div><div class="k lv">has MIDI</div><div class="k lv">has audio</div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="rl">5 trk3</div><div class="k au">load MIDI</div><div class="k au">load audio</div><div class="k off"></div><div class="k lv">has MIDI</div><div class="k lv">has audio</div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="rl">6 trk4</div><div class="k au">load MIDI</div><div class="k au">load audio</div><div class="k off"></div><div class="k lv">has MIDI</div><div class="k lv">has audio</div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div><div class="k off"></div>
+</div>
+<div class="cols">
+<div>
+<h2>Slots &amp; actions</h2>
+<table>
+<tr><td>Row 1</td><td>Tap to select a slot. Bright = selected, medium = has a save, dim = empty.</td></tr>
+<tr><td>SAVE</td><td>Hold 1 s (blinks while held). Saves all 4 tracks' MIDI and audio, plus tempo, loop length, track settings and PARAMS into the selected slot. Overwrites.</td></tr>
+<tr><td>LOAD all</td><td>Loads the whole slot: tempo, bars, every track's MIDI and audio.</td></tr>
+<tr><td>DELETE</td><td>Hold 2 s.</td></tr>
+</table>
+</div>
+<div>
+<h2>Per track (rows 3–6)</h2>
+<table>
+<tr><td>load MIDI</td><td>Loads that track's MIDI from the selected slot into the same track. Undo on the MIDI page brings back what was there.</td></tr>
+<tr><td>load audio</td><td>Same for the audio loop. Undo on the AUDIO/LOOP page brings it back.</td></tr>
+<tr><td>has MIDI / audio</td><td>Shows what the current tracks hold.</td></tr>
+</table>
+<div style="margin-top:6px;color:#555">Mix and match: load track 1's MIDI from one slot and track 3's audio from another.</div>
+</div>
+<div>
+<h2>Good to know</h2>
+<table>
+<tr><td>Files</td><td>dust/data/sci/slotNN/: session.data (MIDI + settings), t1–t4.wav (audio), params.pset. The wavs open in any audio editor.</td></tr>
+<tr><td>Tempo</td><td>Audio is saved at its length in seconds. LOAD all restores the saved tempo. Loading one track's audio at a different tempo shows a warning, because it won't line up.</td></tr>
+<tr><td>Recording</td><td>Saving stops any recording first.</td></tr>
+</table>
+</div>
+</div>
+
+<div class="pb"></div><div class="mhead"><h1>PARAMS reference</h1><span class="sub">Everything in the norns PARAMS menu</span><span class="pg"></span></div><table class="ptab"><tr><th>Group</th><th>Setting</th><th>What it does</th></tr><tr><td>S.C.I.E.N.C.E.</td><td><b>LinnStrument in</b></td><td>The LinnStrument's MIDI port.</td></tr><tr><td></td><td><b>thru (hear live)</b></td><td>on: what you play goes to the selected track's synth through norns.</td></tr><tr><td></td><td><b>LinnStrument bend range</b></td><td>The LinnStrument's MPE bend range (default 48).</td></tr><tr><td></td><td><b>synth bend range</b></td><td>The synth's bend range. Recorded bends are rescaled from one to the other.</td></tr><tr><td></td><td><b>slide (Y) cc</b></td><td>The CC carrying slide (default 74).</td></tr><tr><td>controllers</td><td><b>nanoKEY in / nanoPAD2 in</b></td><td>Found by name; "none" if not plugged in. Neither can share the LinnStrument's port.</td></tr><tr><td></td><td><b>nanoKEY plays</b></td><td>track 1–4 or the selected track (default track 3, the Hades). It plays on the track's first channel, with thru, and records when that track is recording.</td></tr><tr><td></td><td><b>pad note: lane 1 / 2</b></td><td>36 / 38: the nanoPAD2 pads that play each Alecto lane.</td></tr><tr><td></td><td><b>accent from velocity</b></td><td>100: pad hits this hard or harder become accents.
+<tr><td></td><td><b>pads</b></td><td><i>kit</i>: 36/38 play the lanes. <i>tuned</i>: all pad notes thru to ch 10 (Layout B, not recorded). nanoKEY on ch 10 plays the ZOIA; its mod wheel and bend go thru.</td></tr><tr><td>track 1–4</td><td><b>synth out</b></td><td>MIDI device for that track. Defaults: T1 Electra Controller 1 (Nymphes), T2 Electra Controller 2 (Micromonsta 2), T3 the U2MIDI (Hades), T4 Electra Controller 1.</td></tr><tr><td></td><td><b>first / last member ch</b></td><td>MPE channels the track plays on. Default 2–7; track 3 is 2–2, which makes it mono and moves live thru onto channel 2.</td></tr><tr><td></td><td><b>audio follows tape</b></td><td>yes: tape speed, brake and reverse move this track's audio.</td></tr><tr><td></td><td><b>fx cutoff / fx resonance</b></td><td>The track's low-pass filter (LOOP page FX).</td></tr><tr><td></td><td><b>note quantize / strength</b></td><td>Playback quantize grid and amount (QUANT page).</td></tr><tr><td>grid notes</td><td><b>velocity / pressure / slide</b></td><td>Values for notes tapped in on the MIDI page.</td></tr><tr><td>audio</td><td><b>overdub keeps</b></td><td>How much of the old audio stays on each overdub pass (1 = all).</td></tr><tr><td></td><td><b>mute midi after print</b></td><td>Mutes a track's MIDI once PRINT finishes.</td></tr><tr><td></td><td><b>LOOP rec action</b></td><td>REC›DUB (505 default) or REC›PLAY.</td></tr><tr><td></td><td><b>LOOP fade time</b></td><td>Length of FADE in/out on the LOOP page.</td></tr><tr><td>drums (Alecto)</td><td><b>drum out</b></td><td>MIDI device for the shield's TRS out, to the Euroburo.</td></tr><tr><td></td><td><b>voice 1 / 2 channel</b></td><td>10 / 10.</td></tr><tr><td></td><td><b>voice 1 / 2 note</b></td><td>36 / 38. Match the ZOIA patch.</td></tr><tr><td></td><td><b>velocity / accent velocity</b></td><td>80 / 127.</td></tr><tr><td></td><td><b>trigger length (ms)</b></td><td>15. Raise it if the Alecto misses hits.</td></tr><tr><td>screen</td><td><b>screen view</b></td><td>guide or reels at startup. A tap of K1 switches.</td></tr><tr><td>tape</td><td><b>tape drives</b></td><td>MIDI+audio, MIDI only or audio only.</td></tr><tr><td></td><td><b>speed bends pitch</b></td><td>on: slowing the tape lowers pitch, like real tape.</td></tr><tr><td></td><td><b>varispeed slew</b></td><td>How quickly speed changes reach the target.</td></tr><tr><td></td><td><b>brake time</b></td><td>How long a brake takes to stop and to spin back up.</td></tr><tr><td></td><td><b>flutter depth</b></td><td>Wow and flutter amount (E1 also sets it).</td></tr></table><div class="pb"></div><div class="mhead"><h1>Troubleshooting &amp; limits</h1><span class="sub">What to check</span><span class="pg"></span></div>
+<div class="cols3">
+<div>
+<h2>No sound from the Nymphes</h2>
+<ul>
+<li>PARAMS: synth out = <b>Electra Controller 1</b>, thru = on.</li>
+<li>Electra router: USB Device Port 1 → USB Host Port 1, and the Nymphes is on host Port 1.</li>
+<li>Track's MIDI on (AUDIO/LOOP/QUANT pages) isn't muted.</li>
+</ul>
+<h2>Micromonsta or Hades silent</h2>
+<ul>
+<li>Micromonsta: router rule USB Device Port 2 → USB Host Port 2, and it's on host Port 2.</li>
+<li>Hades: track 3's synth out is the U2MIDI, DIP switch 3 on (ch 2), notes within C-1 to C4. If it plays drum notes, it's still on OMNI.</li>
+</ul>
+<h2>nanoKEY or nanoPAD2 not responding</h2>
+<ul><li>PARAMS → controllers: check <i>nanoKEY in</i> and <i>nanoPAD2 in</i>. They can't use the LinnStrument's port.</li>
+<li>nanoPAD2: the pads must send notes 36 and 38 (or change the pad notes in PARAMS).</li></ul>
+<h2>Slides out of tune</h2>
+<ul><li>The two bend-range PARAMS must match the LinnStrument and the synth.</li></ul>
+<h2>Alecto silent</h2>
+<ul>
+<li>drum out = the shield's TRS MIDI port; the Euroburo is listening on ch 10, notes 36/38 (try an octave up or down). TRS Type A vs B: see the ZOIA build guide.</li>
+<li>Very quiet: VELO can only turn down. Unplug the VELO cables to compare.</li>
+<li>Lane not muted (row 3/6 key 16 lit); transport playing.</li>
+<li>Raise trigger length.</li>
+</ul>
+</div>
+<div>
+<h2>Audio loops silent or very quiet</h2>
+<ul>
+<li>Send level up on the Nymphes channel (AUX1), cable into the norns input.</li>
+<li>Balanced TRS into a stereo input can cancel: use a mono TS cable into the left input.</li>
+<li>Track not stopped (LOOP page) and fader up.</li>
+</ul>
+<h2>Hearing the Nymphes twice</h2>
+<ul><li>norns SYSTEM → AUDIO → monitor down.</li></ul>
+<h2>Feedback</h2>
+<ul><li>The norns return channel's AUX1 send must be 0.</li></ul>
+</div>
+<div>
+<h2>Known limits</h2>
+<ul>
+<li>Audio is mono, up to 55 s per loop (8 bars at about 35 bpm).</li>
+<li>One loop length for all tracks. Changing bars or tempo after recording audio misaligns it; SAVE/LOAD restores both.</li>
+<li>Audio undo is one step (press again to redo).</li>
+<li>The Hades is mono and plays C-1 to C4; live thru drops pitch bend on it.</li><li>The Mini's USB host is full with the Nymphes and Micromonsta 2.</li>
+<li>Drums run on the clock and don't follow the tape.</li>
+
+<li>Single-track loads only go into the same track number.</li>
+<li>Tested in a simulated norns; first hardware run may need tweaks.</li>
+</ul>
+</div>
+</div><div class="pb"></div><div class="mhead"><h1>How the code works</h1><span class="sub">A section-by-section tour of sci.lua, in file order</span><span class="pg"></span></div><div class="walk"><div class="wsec"><h2>1 · Header, constants and tracks</h2><p>The comment block at the top is the control reference for every page. Below it are the constants (tick size, speeds, pages, drum clock divisions) and the <code>tracks</code> table with four entries. Each track holds its MIDI notes (<code>pattern</code>), undo <code>history</code>, output port, and audio state (<code>has_audio</code>, <code>gain</code>, <code>rev</code>, <code>fx</code>…). One track = one MIDI loop + one audio loop.</p></div><div class="wsec"><h2>2 · State and helpers</h2><p>The working variables: notes being recorded (<code>live</code>), fingers down (<code>held</code>), tape position (<code>head</code>) and speed, pending quantized actions, the drum lanes, the selected save slot. <code>snap</code> rounds positions so floating-point drift can't break note timing; <code>follow_pitch</code> scrolls the editor.</p></div><div class="wsec"><h2>3 · MIDI recording</h2><p><code>on_midi</code> handles everything from the LinnStrument. A note-on starts a <code>live</code> note; bend, slide and pressure add timestamped points to its <code>curve</code>. <code>commit</code> finalizes the note when you lift your finger, flipping the curve if the tape ran backwards. With thru on, what you play is forwarded to the synth.</p></div><div class="wsec"><h2>4 · MIDI playback</h2><p><code>trigger_notes</code> checks every tick which notes start between the previous and current tape position (<code>in_span</code> handles the loop wrap) and calls <code>start_voice</code>. <code>alloc</code> hands out member channels round-robin, skipping channels your fingers are using. <code>advance_voices</code> steps each playing note through its curve. <code>bend_value</code> converts bend ranges and adds the tape pitch drop. <code>q_start</code> applies note quantize at playback time.</p></div><div class="wsec"><h2>5 · Audio (softcut)</h2><p>Each track has its own softcut voice and buffer regions (loop, backup, temp). The <code>a_</code> functions handle record, overdub, undo-as-swap (so a second undo is redo), clear and the 505 state cycle (<code>a_state</code>, <code>a_big</code>). <code>a_rate</code> sets each voice's speed from the tape. <code>on_wrap</code> runs when the loop restarts, which is how PRINT records exactly one lap.</p></div><div class="wsec"><h2>6 · Tape motion</h2><p><code>ticker</code> runs <code>tape_tick</code> 96 times per beat. Each tick it runs due quantized actions, eases <code>speed</code> toward the target (a linear ramp for brake and spin-up), adds flutter, moves <code>head</code>, triggers notes and steps the drums. <i>Tape drives</i> decides whether MIDI, audio or both follow the motion.</p></div><div class="wsec"><h2>7 · Transport and actions</h2><p>Start, stop, record, undo, clear, track select and loop length. <code>quantized</code> is the launch-quantize wrapper: it queues an action for the next beat or bar and cancels it if the same key is pressed again.</p></div><div class="wsec"><h2>8 · Note editing and grid pages</h2><p>The MIDI editor (add, delete, length), then each page's draw and key functions: AUDIO, LOOP, DRUM (<code>drum_step</code> runs on its own tick counter, so drums ignore the tape; it also draws the moving bar), SAVE (<code>session.data</code> for MIDI and settings, a .wav per track) and QUANT. <code>grid_redraw</code> and <code>g.key</code> come last because they call every page.</p></div><div class="wsec"><h2>9 · norns UI and startup</h2><p><code>key</code> and <code>enc</code> handle buttons and encoders; <code>redraw</code> draws the reels, status line and the 2.5 s title; <code>init</code> builds PARAMS, migrates old saves, starts softcut and the tick loop.</p></div></div></body></html>
