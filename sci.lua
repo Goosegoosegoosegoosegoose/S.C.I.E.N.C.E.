@@ -361,12 +361,37 @@ local function keys_track()
   return (k == 5) and sel or k
 end
 
+-- a decoded message rebuilt as raw bytes on channel ch
+CTL.msg = function(m, ch)
+  local c = (ch or 1) - 1
+  if m.type == "note_on" then return {0x90 + c, m.note, m.vel}
+  elseif m.type == "note_off" then return {0x80 + c, m.note, 0}
+  elseif m.type == "cc" then return {0xB0 + c, m.cc, m.val}
+  elseif m.type == "pitchbend" then
+    local v = (m.val or 8192)
+    return {0xE0 + c, v % 128, math.floor(v / 128)}
+  end
+  return {}
+end
+
 CTL.on_keys = function(data)
   local m = midi.to_msg(data)
-  if m.type ~= "note_on" and m.type ~= "note_off" then return end
   local t = keys_track()
   local tr = tracks[t]
   local lo = params:get("ch_lo_" .. t)
+  -- nanoKEY set to the drum channel: its keys play the ZOIA / Alecto directly
+  if m.ch == params:get("drum_ch_1") then
+    if drum_out and (m.type == "note_on" or m.type == "note_off" or m.type == "cc") then
+      drum_out:send(CTL.msg(m, m.ch))
+    end
+    return
+  end
+  -- mod wheel and pitch bend pass through to the track's synth (Hades MOD out)
+  if m.type == "cc" or m.type == "pitchbend" then
+    if params:get("thru") == 2 and tr.out then tr.out:send(CTL.msg(m, lo)) end
+    return
+  end
+  if m.type ~= "note_on" and m.type ~= "note_off" then return end
   local on = (m.type == "note_on" and m.vel > 0)
   if params:get("thru") == 2 and tr.out then
     if on then tr.out:note_on(m.note, m.vel, lo) else tr.out:note_off(m.note, 0, lo) end
@@ -1389,6 +1414,13 @@ CTL.on_pads = function(data)
     end
     return
   end
+  if params:get("pad_mode") == 2 then
+    -- tuned pads: every note goes straight to the ZOIA on the drum channel
+    if drum_out and (m.type == "note_on" or m.type == "note_off") then
+      drum_out:send(CTL.msg(m, params:get("drum_ch_1")))
+    end
+    return
+  end
   if m.type ~= "note_on" or m.vel == 0 then return end
   local l = (m.note == params:get("pad_note_1")) and 1
     or (m.note == params:get("pad_note_2")) and 2 or nil
@@ -2194,7 +2226,7 @@ function init()
       end
     end)
   end
-  params:add_group("controllers", 6)
+  params:add_group("controllers", 7)
   params:add_option("keys_in", "nanoKEY in", ports, find_korg("nanokey"))
   hook("keys_in", "keys_in", CTL.on_keys)
   params:add_option("keys_track", "nanoKEY plays",
@@ -2204,6 +2236,7 @@ function init()
   params:add_number("pad_note_1", "pad note: lane 1", 0, 127, 36)
   params:add_number("pad_note_2", "pad note: lane 2", 0, 127, 38)
   params:add_number("pad_accent", "accent from velocity", 1, 127, 100)
+  params:add_option("pad_mode", "pads", {"kit: lanes", "tuned: all thru"}, 1)
   params:add_number("in_bend", "LinnStrument bend range", 1, 96, 48)
   params:add_number("out_bend", "synth bend range", 1, 96, 48)
   params:add_number("slide_cc", "slide (Y) cc", 0, 127, 74)

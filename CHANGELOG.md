@@ -5,6 +5,7 @@
 - **Drums:** both Alecto voices on **channel 10**, notes **36 and 38**, matching the ZOIA patch (CV 1/2 → TRIG, CV 3/4 → VELO).
 - **Recorded velocity:** nanoPAD2 hits replay at the velocity you played, so the Alecto's VELO follows your playing. Live pad hits pass their velocity too. A grid tap sets a step back to 80/127.
 - **X-Y pad moves:** the nanoPAD2's CCs pass to the ZOIA on the drum channel and are recorded with DRUM page REC, looping over lane 1. Saved in slots and covered by undo.
+- **CV guide layouts:** a new *pads* setting, *tuned: all thru*, sends every nanoPAD2 note to the ZOIA on channel 10 for Layout B (tuned pads; not recorded into the lanes). The nanoKEY's mod wheel and pitch bend now pass to its track (Hades MOD out), and a nanoKEY set to channel 10 plays the ZOIA directly.
 - Port search skips the Korg controllers and the U2MIDI when picking the TRS port.
 - Manual: MIDI wiring with the U2MIDI, audio with the ZOIA inline (out L/R → L6max ch 1/3), ZOIA page matching the build guide, Hades DIP switch and C-1 to C4 range.
 
