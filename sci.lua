@@ -107,6 +107,8 @@ local CTL = {      -- nanoKEY / nanoPAD2 input
   drum_rec = false,  -- recording pads into the drum lanes
   rec_snap = false,  -- undo snapshot taken for this recording pass
   skip = {},         -- [lane] = step already played live this pass
+  cc = {},           -- [tick] = {[cc] = value}: recorded nanoPAD2 X-Y moves
+  cc_touch = {},     -- [cc] = time of the last live move (pauses its replay)
 }
 local SPEEDS = {1/4, 1/2, 2/3, 3/4, 1, 4/3, 3/2, 2}
 local NT = 4               -- tracks
@@ -161,12 +163,13 @@ local slot_used = {}       -- [n] = true if the slot has a save
 local save_hold = nil      -- clock id while SAVE / DELETE is held
 local save_msg, save_msg_t = "", 0
 
--- drums: two step lanes, steps[i] = 0 off, 1 on, 2 accent
+-- drums: two step lanes, steps[i] = 0 off, 1 on, 2 accent;
+-- vel[i] = the velocity a nanoPAD2 hit recorded there (nil = use the level)
 local lanes = {}
 for l = 1, 2 do
   local st = {}
   for i = 1, 16 do st[i] = 0 end
-  lanes[l] = {steps = st, len = 16, div = 2, mute = false}
+  lanes[l] = {steps = st, vel = {}, len = 16, div = 2, mute = false}
 end
 local drum_tick = 0        -- ticks since the transport started
 local drum_pos = {0, 0}    -- step each lane last played (1-based, 0 = none)
@@ -1251,20 +1254,35 @@ end
 -- DRUM page ---------------------------------------------------------
 
 local function drum_snapshot()
-  local snap_l = {}
+  local snap_l = {cc = {}}
+  for t, ev in pairs(CTL.cc) do
+    local e = {}
+    for c, v in pairs(ev) do e[c] = v end
+    snap_l.cc[t] = e
+  end
   for l, ln in ipairs(lanes) do
-    local st = {}
-    for i = 1, 16 do st[i] = ln.steps[i] end
-    snap_l[l] = {steps = st, len = ln.len, div = ln.div, mute = ln.mute}
+    local st, ve = {}, {}
+    for i = 1, 16 do st[i] = ln.steps[i]; ve[i] = ln.vel[i] or 0 end
+    snap_l[l] = {steps = st, vel = ve, len = ln.len, div = ln.div, mute = ln.mute}
   end
   return snap_l
 end
 
 local function drum_restore(snap_l)
+  CTL.cc = {}
+  for t, ev in pairs(snap_l.cc or {}) do
+    local e = {}
+    for c, v in pairs(ev) do e[c] = v end
+    CTL.cc[tonumber(t)] = e
+  end
   for l = 1, 2 do
     local src = snap_l[l]
     if src then
-      for i = 1, 16 do lanes[l].steps[i] = src.steps[i] or 0 end
+      for i = 1, 16 do
+        lanes[l].steps[i] = src.steps[i] or 0
+        local v = src.vel and src.vel[i] or 0
+        lanes[l].vel[i] = (v > 0) and v or nil
+      end
       lanes[l].len = util.clamp(src.len or 16, 1, 16)
       lanes[l].div = util.clamp(src.div or 2, 1, #DIVS)
       lanes[l].mute = src.mute or false
@@ -1285,20 +1303,30 @@ end
 
 drum_clear = function()
   drum_edit()
-  for l = 1, 2 do for i = 1, 16 do lanes[l].steps[i] = 0 end end
+  for l = 1, 2 do
+    for i = 1, 16 do lanes[l].steps[i] = 0 end
+    lanes[l].vel = {}
+  end
+  CTL.cc = {}
 end
 
-local function drum_hit(l, accent)
+local function drum_hit(l, accent, live_vel)
   if not drum_out then return end
   local ch = params:get("drum_ch_" .. l)
   local note = params:get("drum_note_" .. l)
-  local vel = accent and params:get("drum_vel_acc") or params:get("drum_vel")
+  -- a pad played live keeps its own velocity (the Alecto's VELO follows it)
+  local vel = live_vel or (accent and params:get("drum_vel_acc") or params:get("drum_vel"))
   local out = drum_out
   out:note_on(note, vel, ch)
   clock.run(function()
     clock.sleep(params:get("drum_gate") / 1000)
     out:note_off(note, 0, ch)
   end)
+end
+
+-- ticks in the CC loop: lane 1's length x its division
+CTL.cc_len = function()
+  return lanes[1].len * DIVS[lanes[1].div].tps
 end
 
 -- called once per tick while the transport plays
@@ -1312,7 +1340,18 @@ drum_step = function()
       if CTL.skip[l] == i then
         CTL.skip[l] = nil          -- already played live from a pad
       elseif v > 0 and not ln.mute then
-        drum_hit(l, v == 2)
+        drum_hit(l, v == 2, ln.vel[i])
+      end
+    end
+  end
+  -- recorded X-Y moves loop over lane 1's length, on lane 1's channel
+  local ev = CTL.cc[drum_tick % CTL.cc_len()]
+  if ev and drum_out then
+    local now = util.time()
+    for c, v in pairs(ev) do
+      local touched = CTL.cc_touch[c]
+      if not touched or now - touched > 0.25 then
+        drum_out:cc(c, v, params:get("drum_ch_1"))
       end
     end
   end
@@ -1322,10 +1361,11 @@ end
 local function drum_shift(l, d)
   drum_edit()
   local ln = lanes[l]
-  local old = {}
-  for i = 1, ln.len do old[i] = ln.steps[i] end
+  local old, oldv = {}, {}
+  for i = 1, ln.len do old[i] = ln.steps[i]; oldv[i] = ln.vel[i] end
   for i = 1, ln.len do
     ln.steps[i] = old[(i - 1 - d) % ln.len + 1]
+    ln.vel[i] = oldv[(i - 1 - d) % ln.len + 1]
   end
 end
 
@@ -1333,12 +1373,28 @@ end
 -- is on, each hit is written to the nearest step of its lane
 CTL.on_pads = function(data)
   local m = midi.to_msg(data)
+  if m.type == "cc" then
+    -- X-Y pad and knobs: pass through to the ZOIA on the drum channel,
+    -- and record them while the DRUM page's REC is on
+    if drum_out then drum_out:cc(m.cc, m.val, params:get("drum_ch_1")) end
+    CTL.cc_touch[m.cc] = util.time()
+    if CTL.drum_rec and playing then
+      if not CTL.rec_snap then
+        drum_edit()
+        CTL.rec_snap = true
+      end
+      local t = math.max(drum_tick - 1, 0) % CTL.cc_len()
+      CTL.cc[t] = CTL.cc[t] or {}
+      CTL.cc[t][m.cc] = m.val
+    end
+    return
+  end
   if m.type ~= "note_on" or m.vel == 0 then return end
   local l = (m.note == params:get("pad_note_1")) and 1
     or (m.note == params:get("pad_note_2")) and 2 or nil
   if not l then return end
   local accent = m.vel >= params:get("pad_accent")
-  drum_hit(l, accent)
+  drum_hit(l, accent, m.vel)
   if not (CTL.drum_rec and playing) then return end
   local ln = lanes[l]
   local tps = DIVS[ln.div].tps
@@ -1352,6 +1408,7 @@ CTL.on_pads = function(data)
   end
   local v = accent and 2 or 1
   if ln.steps[i] < v then ln.steps[i] = v end
+  ln.vel[i] = math.max(ln.vel[i] or 0, m.vel)   -- replays at the velocity you played
 end
 
 local function draw_drum_page(blink, fast)
@@ -1403,6 +1460,7 @@ local function drum_key(x, y, z)
       drum_press[id] = nil
       if x > ln.len then return end
       drum_edit()
+      ln.vel[x] = nil   -- a grid edit goes back to the fixed velocities
       if held_for >= ACCENT_HOLD then
         ln.steps[x] = (ln.steps[x] == 2) and 1 or 2
       else
@@ -2153,8 +2211,8 @@ function init()
   -- default ports, found by name where possible:
   --   track 1 Nymphes   -> Electra Controller 1 (Mini host Port 1)
   --   track 2 Micromonsta 2 -> Electra Controller 2 (Mini host Port 2)
-  --   track 3 Hades     -> the shield's TRS MIDI out, channel 12, mono
-  --   (the Euroburo passes channel 12 on to the Hades' MIDI in)
+  --   track 3 Hades     -> the U2MIDI (USB to 5-pin DIN), channel 2, mono
+  --   (the Hades' internal DIP switch 3 sets it to channel 2)
   local function find_port(pattern, fallback)
     for i = 1, #midi.vports do
       local n = string.lower(midi.vports[i].name or "")
@@ -2163,6 +2221,11 @@ function init()
     return math.min(fallback, math.max(#names, 1))
   end
   local e1 = find_port("electra.*1", 2)
+  local u2 = nil
+  for i = 1, #midi.vports do
+    local n = string.lower(midi.vports[i].name or "")
+    if string.find(n, "u2midi") or string.find(n, "cme") then u2 = i; break end
+  end
   local e2 = find_port("electra.*2", e1)
   -- the shield's TRS MIDI port: the first device that isn't the Electra,
   -- the LinnStrument or an empty slot (check it in PARAMS)
@@ -2170,14 +2233,15 @@ function init()
   for i = 1, #midi.vports do
     local n = string.lower(midi.vports[i].name or "")
     if n ~= "" and n ~= "none" and not string.find(n, "electra")
-        and not string.find(n, "linn") then
+        and not string.find(n, "linn") and not string.find(n, "nano")
+        and not string.find(n, "u2midi") and not string.find(n, "cme") then
       UI.TRS_PORT = i
       break
     end
   end
   UI.TRS_PORT = UI.TRS_PORT or math.min(3, math.max(#names, 1))
-  UI.TRACK_PORT = {e1, e2, UI.TRS_PORT, e1}
-  UI.TRACK_CH = {{2, 7}, {2, 7}, {12, 12}, {2, 7}}
+  UI.TRACK_PORT = {e1, e2, u2 or UI.TRS_PORT, e1}
+  UI.TRACK_CH = {{2, 7}, {2, 7}, {2, 2}, {2, 7}}
 
   for t = 1, NT do
     params:add_group("track " .. t, 8)
@@ -2217,8 +2281,8 @@ function init()
   params:set_action("drum_out", function(i) drum_out = midi.connect(i) end)
   params:add_number("drum_ch_1", "voice 1 channel", 1, 16, 10)
   params:add_number("drum_note_1", "voice 1 note", 0, 127, 36)
-  params:add_number("drum_ch_2", "voice 2 channel", 1, 16, 11)
-  params:add_number("drum_note_2", "voice 2 note", 0, 127, 36)
+  params:add_number("drum_ch_2", "voice 2 channel", 1, 16, 10)
+  params:add_number("drum_note_2", "voice 2 note", 0, 127, 38)
   params:add_number("drum_vel", "velocity", 1, 127, 80)
   params:add_number("drum_vel_acc", "accent velocity", 1, 127, 127)
   params:add_number("drum_gate", "trigger length (ms)", 1, 200, 15)

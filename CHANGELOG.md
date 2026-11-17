@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-17 (later): matched to the ZOIA build guide and CV guide
+- **Hades** now defaults to the **U2MIDI** port on **channel 2** (the Hades' DIP switch 3), not the ZOIA on channel 12. The ZOIA has no MIDI thru.
+- **Drums:** both Alecto voices on **channel 10**, notes **36 and 38**, matching the ZOIA patch (CV 1/2 → TRIG, CV 3/4 → VELO).
+- **Recorded velocity:** nanoPAD2 hits replay at the velocity you played, so the Alecto's VELO follows your playing. Live pad hits pass their velocity too. A grid tap sets a step back to 80/127.
+- **X-Y pad moves:** the nanoPAD2's CCs pass to the ZOIA on the drum channel and are recorded with DRUM page REC, looping over lane 1. Saved in slots and covered by undo.
+- Port search skips the Korg controllers and the U2MIDI when picking the TRS port.
+- Manual: MIDI wiring with the U2MIDI, audio with the ZOIA inline (out L/R → L6max ch 1/3), ZOIA page matching the build guide, Hades DIP switch and C-1 to C4 range.
+
 ## 2026-11-17
 - **nanoKEY input.** Plays and records a chosen track (default track 3, the Hades), with thru on that track's channel and step record through a held grid key.
 - **nanoPAD2 input.** Pads 36 and 38 play the two Alecto lanes live. REC on the DRUM page records hits to the nearest step, and hard hits become accents. A hit just before a step plays only once. Undo removes the whole pass.

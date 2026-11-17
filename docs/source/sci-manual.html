@@ -99,9 +99,9 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 <rect x="240" y="215" width="150" height="52" rx="8" class="dev"/><text x="315.0" y="240.0" class="bt">Electra One Mini</text><text x="315.0" y="253.0" class="bs">USB device → hub</text>
 <rect x="140" y="345" width="160" height="52" rx="8" class="dev"/><text x="220.0" y="370.0" class="bt">Dreadbox Nymphes</text><text x="220.0" y="383.0" class="bs">Mini host Port 1</text>
 <rect x="330" y="345" width="160" height="52" rx="8" class="dev"/><text x="410.0" y="370.0" class="bt">Micromonsta 2</text><text x="410.0" y="383.0" class="bs">Mini host Port 2</text>
-<rect x="720" y="30" width="180" height="56" rx="8" class="dev"/><text x="810.0" y="57.0" class="bt">ZOIA Euroburo</text><text x="810.0" y="70.0" class="bs">one patch: MIDI → CV, MIDI thru</text>
-<rect x="690" y="190" width="130" height="52" rx="8" class="dev"/><text x="755.0" y="215.0" class="bt">Dreadbox Alecto</text><text x="755.0" y="228.0" class="bs">voice 1 + 2 trigger in</text>
-<rect x="845" y="190" width="140" height="52" rx="8" class="dev"/><text x="915.0" y="215.0" class="bt">Dreadbox Hades</text><text x="915.0" y="228.0" class="bs">MIDI in, ch 12</text>
+<rect x="720" y="30" width="180" height="56" rx="8" class="dev"/><text x="810.0" y="57.0" class="bt">ZOIA Euroburo</text><text x="810.0" y="70.0" class="bs">one patch: MIDI → CV, crushers</text>
+<rect x="690" y="190" width="130" height="52" rx="8" class="dev"/><text x="755.0" y="215.0" class="bt">Dreadbox Alecto</text><text x="755.0" y="228.0" class="bs">TRIG 1/2 · VELO 1/2</text>
+<rect x="845" y="190" width="140" height="52" rx="8" class="dev"/><text x="915.0" y="215.0" class="bt">Dreadbox Hades</text><text x="915.0" y="228.0" class="bs">DIN MIDI in · ch 2</text>
 <path d="M170,56 L205,56 L205,98 L240,98" class="usb" marker-end="url(#arr-usb)"/><text x="178" y="50" class="lbl" text-anchor="start">USB</text>
 <path d="M170,166 L425,166 L425,135 L450,135" class="usb" marker-end="url(#arr-usb)"/><text x="190" y="160" class="lbl" text-anchor="start">USB (grid)</text>
 <path d="M390,106 L450,106" class="usb" marker-end="url(#arr-usb)"/><text x="405" y="100" class="lbl" text-anchor="start">USB</text>
@@ -109,13 +109,14 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 <path d="M290,267 L290,315 L220,315 L220,345" class="usb" marker-end="url(#arr-usb)"/><text x="160" y="330" class="lbl" text-anchor="start">host Port 1</text>
 <path d="M340,267 L340,315 L410,315 L410,345" class="usb" marker-end="url(#arr-usb)"/><text x="418" y="330" class="lbl" text-anchor="start">host Port 2 (powered hub)</text>
 <path d="M630,90 L720,62" class="trs" marker-end="url(#arr-trs)"/><text x="640" y="60" class="lbl" text-anchor="start">TRS MIDI out</text>
-<text x="636" y="112" class="lbl">ch 10/11 drums</text><text x="636" y="124" class="lbl">ch 12 Hades</text>
-<path d="M915,86 L915,190" class="trs" marker-end="url(#arr-trs)"/><text x="922" y="120" class="lbl" text-anchor="start">MIDI out</text>
-<text x="922" y="132" class="lbl">TRS-A</text><text x="922" y="144" class="lbl">stereo</text><text x="922" y="156" class="lbl">cable</text>
+<text x="636" y="112" class="lbl">ch 10 drums</text><text x="636" y="124" class="lbl">notes 36 / 38</text>
+<rect x="450" y="178" width="150" height="44" rx="8" class="dev"/><text x="525" y="198" class="bt">U2MIDI</text><text x="525" y="212" class="bs">USB → 5-pin DIN</text>
+<path d="M375,132 L375,200 L450,200" class="usb" marker-end="url(#arr-usb)"/>
+<path d="M600,212 L640,212 L640,268 L915,268 L915,242" class="trs" marker-end="url(#arr-trs)"/><text x="700" y="284" class="lbl" text-anchor="start">5-pin DIN · bass, ch 2 (sci track 3)</text>
 <path d="M745,86 L745,190" class="cv" marker-end="url(#arr-cv)"/><text x="717" y="150" class="lbl" text-anchor="start">CV 1</text>
 <path d="M790,86 L790,190" class="cv" marker-end="url(#arr-cv)"/><text x="798" y="150" class="lbl" text-anchor="start">CV 2</text>
-<text x="910" y="22" class="lbl">CV 3 → accent · CV 4 free</text>
-<path d="M20,415 L60,415" class="usb"/><text x="68" y="419" class="lbl">USB MIDI</text><path d="M180,415 L220,415" class="trs"/><text x="228" y="419" class="lbl">TRS MIDI</text><path d="M340,415 L380,415" class="cv"/><text x="388" y="419" class="lbl">CV / trigger</text>
+<text x="720" y="20" class="lbl">CV 3 → VELO 1 · CV 4 → VELO 2 (0–5 V)</text>
+<path d="M20,415 L60,415" class="usb"/><text x="68" y="419" class="lbl">USB MIDI</text><path d="M180,415 L220,415" class="trs"/><text x="228" y="419" class="lbl">TRS / DIN MIDI</text><path d="M340,415 L380,415" class="cv"/><text x="388" y="419" class="lbl">CV / trigger</text>
 </svg></div>
 <div class="cols3">
 <div>
@@ -133,7 +134,7 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 </ul>
 <h2>norns settings</h2>
 <ul>
-<li>SYSTEM → DEVICES → MIDI: assign <b>LinnStrument</b>, <b>Electra Controller 1</b> and <b>2</b>, and the shield's <b>TRS MIDI</b> port.</li>
+<li>SYSTEM → DEVICES → MIDI: assign <b>LinnStrument</b>, <b>Electra Controller 1</b> and <b>2</b>, <b>U2MIDI</b>, <b>nanoKEY2</b>, <b>nanoPAD2</b> and the shield's <b>TRS MIDI</b> port.</li>
 <li>SYSTEM → AUDIO: <b>monitor</b> all the way down.</li>
 </ul>
 </div>
@@ -149,7 +150,7 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 <table class="ptab">
 <tr><td>1</td><td><b>Nymphes</b></td><td>Electra Controller 1 · ch 2–7</td></tr>
 <tr><td>2</td><td><b>Micromonsta 2</b></td><td>Electra Controller 2 · ch 2–7: set to its MPE voices</td></tr>
-<tr><td>3</td><td><b>Hades</b></td><td>shield TRS port · ch 12 only (mono)</td></tr>
+<tr><td>3</td><td><b>Hades</b></td><td>U2MIDI · ch 2 only (mono)</td></tr>
 <tr><td>4</td><td>spare</td><td>Electra Controller 1</td></tr>
 </table>
 <p>Thru follows the selected track; on a one-channel track (the Hades) your notes move to its channel, without bend. The <b>nanoKEY</b> plays track 3 and the <b>nanoPAD2</b> pads 36/38 play the Alecto lanes (PARAMS → controllers); both go on the USB hub.</p>
@@ -160,8 +161,8 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 <li><b>LinnStrument</b>: normal MPE layout, member channels 2–7, bend range to match the Nymphes.</li>
 <li><b>Nymphes</b>: MPE on (firmware 2.0+). Match sci's <i>synth bend range</i> to it.</li>
 <li><b>Micromonsta 2</b>: MPE, firmware V3 (works on the Mini's USB host). Set track 2's member channels to its voice count.</li>
-<li><b>Hades</b>: set it to channel 12: switch to OMNI, play a note on ch 12, switch to CHAN. It gets notes only (no bend) through the ZOIA, mono, C0–C5 over MIDI.</li>
-<li><b>ZOIA Euroburo</b>: load the patch on the ZOIA page of this manual. sci's <i>drum out</i> and track 3 both use the shield's TRS port; check it in PARAMS.</li>
+<li><b>Hades</b>: MIDI in (5-pin DIN) from the U2MIDI. It listens on all channels until you set its internal DIP switch: <b>switch 3 on = channel 2</b>. Mono, notes C-1 to C4.</li>
+<li><b>ZOIA Euroburo</b>: the patch on the ZOIA page (from the ZOIA build guide). sci's <i>drum out</i> is the shield's TRS port; the ZOIA is TRS Type A.</li>
 </ul>
 <h2>Check it works</h2>
 <ol>
@@ -170,7 +171,7 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 <li>AUDIO page, REC a few bars: it plays back.</li>
 </ol>
 </div>
-</div><div class="pb"></div><div class="mhead"><h1>Wiring: audio</h1><span class="sub">Everything into the L6max, with two send loops</span><span class="pg"></span></div>
+</div><div class="pb"></div><div class="mhead"><h1>Wiring: audio</h1><span class="sub">Everything into the L6max, with the ZOIA inline</span><span class="pg"></span></div>
 <div class="figure"><svg viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" class="wiring">
 <defs>
 <marker id="arr-usb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3c6fd1"/></marker>
@@ -189,12 +190,12 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 .aud{stroke:#2f9a57;stroke-width:2.2;fill:none;stroke-dasharray:6 3}
 .ch{font:10px Helvetica,Arial;fill:#333}
 </style>
-<rect x="20" y="20" width="140" height="46" rx="8" class="dev"/><text x="90.0" y="42.0" class="bt">Hades</text><text x="90.0" y="55.0" class="bs">mono</text>
-<rect x="175" y="20" width="140" height="46" rx="8" class="dev"/><text x="245.0" y="42.0" class="bt">Alecto</text><text x="245.0" y="55.0" class="bs">main out</text>
+<rect x="20" y="20" width="140" height="46" rx="8" class="dev"/><text x="90.0" y="42.0" class="bt">Hades</text><text x="90.0" y="55.0" class="bs">mono, hot (10 Vpp)</text>
+<rect x="175" y="20" width="140" height="46" rx="8" class="dev"/><text x="245.0" y="42.0" class="bt">Alecto</text><text x="245.0" y="55.0" class="bs">MASTER out</text>
 <rect x="330" y="20" width="140" height="46" rx="8" class="dev"/><text x="400.0" y="42.0" class="bt">Nymphes</text><text x="400.0" y="55.0" class="bs">out</text>
 <rect x="485" y="20" width="140" height="46" rx="8" class="dev"/><text x="555.0" y="42.0" class="bt">Micromonsta 2</text><text x="555.0" y="55.0" class="bs">stereo</text>
 <rect x="780" y="40" width="170" height="62" rx="8" fill="#2d2d2d"/><text x="865.0" y="67.0" style="font:700 14px Helvetica,Arial;fill:#fff;text-anchor:middle">norns</text><text x="865.0" y="83.0" style="font:10px Helvetica,Arial;fill:#ccc;text-anchor:middle">in: AUX 1 · out: return</text>
-<rect x="780" y="230" width="170" height="62" rx="8" class="dev"/><text x="865.0" y="260.0" class="bt">ZOIA Euroburo</text><text x="865.0" y="273.0" class="bs">FX: bitcrush · alias</text>
+<rect x="40" y="86" width="290" height="44" rx="8" class="dev"/><text x="185" y="104" class="bt">ZOIA Euroburo (inline)</text><text x="185" y="118" class="bs">L: bass crusher · R: drum crusher</text>
 <rect x="60" y="150" width="600" height="130" rx="10" class="dev"/>
 <text x="360" y="272" class="bt">Zoom LiveTrak L6max</text>
 <rect x="75" y="185" width="66" height="40" rx="4" fill="#fff" stroke="#999"/>
@@ -217,21 +218,21 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 <text x="468" y="215" class="ch" text-anchor="middle">Micromonsta 2</text>
 <rect x="507" y="185" width="66" height="40" rx="4" fill="#eaf4fb" stroke="#999"/>
 <text x="540" y="200" class="ch" text-anchor="middle" style="font-weight:700">ch 7</text>
-<text x="540" y="215" class="ch" text-anchor="middle">ZOIA return</text>
+<text x="540" y="215" class="ch" text-anchor="middle">spare</text>
 <rect x="579" y="185" width="66" height="40" rx="4" fill="#eaf4fb" stroke="#999"/>
 <text x="612" y="200" class="ch" text-anchor="middle" style="font-weight:700">ch 8</text>
 <text x="612" y="215" class="ch" text-anchor="middle">norns return</text>
 <text x="214" y="242" class="lbl" text-anchor="middle">mono 1–4 (combo)</text>
 <text x="502" y="242" class="lbl" text-anchor="middle">stereo 5–8 (line, −20 dB pad)</text>
-<path d="M90,66 L90,110 L108,110 L108,185" class="aud" marker-end="url(#arr-aud)"/>
-<path d="M245,66 L245,110 L252,110 L252,185" class="aud" marker-end="url(#arr-aud)"/>
+<path d="M90,66 L90,86" class="aud" marker-end="url(#arr-aud)"/><text x="84" y="80" class="lbl" text-anchor="end">in L</text>
+<path d="M245,66 L245,86" class="aud" marker-end="url(#arr-aud)"/><text x="239" y="80" class="lbl" text-anchor="end">in R</text>
+<path d="M108,130 L108,185" class="aud" marker-end="url(#arr-aud)"/><text x="114" y="144" class="lbl">out L</text>
+<path d="M252,130 L252,185" class="aud" marker-end="url(#arr-aud)"/><text x="258" y="144" class="lbl">out R</text>
 <path d="M400,66 L400,110 L396,110 L396,185" class="aud" marker-end="url(#arr-aud)"/>
 <path d="M555,66 L555,110 L468,110 L468,185" class="aud" marker-end="url(#arr-aud)"/>
 <path d="M660,170 L740,170 L740,81 L780,81" class="aud" marker-end="url(#arr-aud)"/><text x="748" y="140" class="lbl" text-anchor="start">AUX SEND 1 → norns in</text><text x="748" y="152" class="lbl" text-anchor="start">(mono TS cable)</text>
 <path d="M780,58 L612,58 L612,185" class="aud" marker-end="url(#arr-aud)"/>
 <text x="640" y="50" class="lbl">norns out → ch 8</text>
-<path d="M660,255 L780,255" class="aud" marker-end="url(#arr-aud)"/><text x="668" y="248" class="lbl" text-anchor="start">AUX SEND 2 → ZOIA in</text>
-<path d="M865,292 L865,330 L540,330 L540,280" class="aud" marker-end="url(#arr-aud)"/><text x="700" y="345" class="lbl" text-anchor="start">ZOIA out → ch 7</text>
 <path d="M300,280 L300,330 L220,330" class="aud" marker-end="url(#arr-aud)"/><text x="60" y="350" class="lbl" text-anchor="start">MAIN OUT → speakers / pedals / headphones</text>
 <path d="M20,385 L60,385" class="aud"/><text x="68" y="389" class="lbl">audio</text>
 </svg></div>
@@ -239,16 +240,16 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 <div>
 <h2>Channel plan</h2>
 <table class="ptab">
-<tr><td>1</td><td>Hades (mono out)</td></tr>
+<tr><td>1</td><td>Hades, via ZOIA out L</td></tr>
 <tr><td>2</td><td>violin / mic (Hi-Z or XLR)</td></tr>
-<tr><td>3</td><td>Alecto main out</td></tr>
+<tr><td>3</td><td>Alecto MASTER, via ZOIA out R</td></tr>
 <tr><td>4</td><td>spare</td></tr>
 <tr><td>5</td><td>Nymphes</td></tr>
 <tr><td>6</td><td>Micromonsta 2</td></tr>
-<tr><td>7</td><td>ZOIA return (FX bus)</td></tr>
+<tr><td>7</td><td>spare</td></tr>
 <tr><td>8</td><td>norns return (sci loops)</td></tr>
 </table>
-<p>Use the −20 dB pad on 5–8 for hot synth and Eurorack levels. Move things around to suit; just keep the two returns on their own channels.</p>
+<p>The ZOIA sits inline, as in the ZOIA build guide: each synth has its own crusher, and the mix knob on each chain takes it fully clean. Use the −20 dB pad on 5–8 for hot sources.</p>
 </div>
 <div>
 <h2>AUX 1: what sci records</h2>
@@ -256,73 +257,66 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 <li>AUX SEND 1 → norns input, <b>mono TS</b> cable into the left input.</li>
 <li>Press <b>AUX1</b>, raise the synths you want to loop or print (Nymphes, Micromonsta, Hades…).</li>
 <li>Keep <b>ch 8 (norns return)</b> at 0, or it feeds back.</li>
-<li>Raise <b>ch 7 (ZOIA return)</b> if you want sci to record the crushed sound.</li>
+<li>Ch 1 and 3 arrive already crushed, so sci records the crushed sound; set the ZOIA mix to clean to record them dry.</li>
 </ul>
-<h2>AUX 2: the ZOIA effects bus</h2>
+<h2>AUX 2</h2>
 <ul>
-<li>AUX SEND 2 → Euroburo audio input L.</li>
-<li>Press <b>AUX2</b>, raise any channel you want crushed: drums, Hades, even the norns loops (ch 8).</li>
-<li>Keep <b>ch 7 (ZOIA return)</b> at 0 on AUX2, or it feeds back.</li>
+<li>Free. The ZOIA no longer needs a send; it is patched inline between the Hades/Alecto and ch 1/3.</li>
 </ul>
 </div>
 <div>
 <h2>Levels</h2>
 <ul>
-<li>The AUX sends are line level; the ZOIA expects Eurorack level. Add gain in the patch (see the ZOIA page) rather than pushing the send to the max.</li>
-<li>The ZOIA's output is hot: use the pad on ch 7.</li>
+<li>The Hades out is hot (10 Vpp): start the ZOIA's audio in L pad at <b>−12 dB</b>, move to −6 or 0 if it's quiet.</li>
+<li>Hades cable: 6.3 mm to 3.5 mm mono. ZOIA outs: 3.5 mm to 6.3 mm mono into ch 1 and 3.</li>
 <li>norns SYSTEM → AUDIO: monitor all the way down.</li>
 </ul>
 <h2>Pedals</h2>
 <p>Your Komorebi and Darkness can stay on the main out as before, so they process the whole mix.</p>
 </div>
-</div><div class="pb"></div><div class="mhead"><h1>ZOIA patch recipe</h1><span class="sub">One Euroburo patch does drums, Hades and effects at once</span><span class="pg"></span></div>
+</div><div class="pb"></div><div class="mhead"><h1>ZOIA patch recipe</h1><span class="sub">The same patch as the ZOIA build guide (Layout A: dynamic kit), in short</span><span class="pg"></span></div>
 <div class="cols3">
 <div>
-<h2>1 · Alecto drums (CV)</h2>
+<h2>Page 1 · MIDI to Alecto</h2>
 <ol>
-<li><b>MIDI Notes In</b>, channel 10 → its <i>gate</i> to <b>CV Out 1</b> (range 0–5 V) → Alecto voice 1 trigger.</li>
-<li><b>MIDI Notes In</b>, channel 11 → <i>gate</i> to <b>CV Out 2</b> (0–5 V) → Alecto voice 2 trigger.</li>
-<li>Channel 10's <i>velocity</i> → <b>CV Out 3</b> → an Alecto accent/level input. sci sends 80 normally, 127 on accented steps.</li>
-<li>CV Out 4 is free: voice 2's velocity, an LFO, or the Hades filter.</li>
+<li><b>Midi Notes In</b>: channel 10, 1 output, priority newest, velocity output on, trigger pulse on, low and high note <b>C1 (36)</b>.</li>
+<li>Its <i>trigger out</i> → <b>CV out 1</b> → Alecto <b>TRIG 1</b>. Its <i>velocity out</i> → <b>CV out 3</b> → Alecto <b>VELO 1</b>.</li>
+<li>A second <b>Midi Notes In</b> on the next row, the same but low and high note <b>D1 (38)</b>: trigger → <b>CV out 2</b> → <b>TRIG 2</b>, velocity → <b>CV out 4</b> → <b>VELO 2</b>.</li>
+<li>Each CV out: Edit → out range <b>0 to 5 V</b>, in range 0 to 1. Save.</li>
 </ol>
-<p class="note">The gate lasts as long as sci's <i>trigger length</i> (15 ms). Raise it in PARAMS if the Alecto misses hits.</p>
-<h2>2 · Hades (MIDI thru)</h2>
-<ol>
-<li><b>MIDI Notes In</b>, channel 12 → <b>MIDI Note Out</b>, channel 12 (note, gate and velocity).</li>
-<li>Euroburo MIDI out → Hades MIDI in with a plain 3.5 mm stereo cable (both are TRS type A).</li>
-</ol>
-<p class="note">Only notes get through; the Hades' bend range is small anyway. If your ZOIA firmware offers MIDI thru in its config menu, you can use that instead.</p>
+<p class="note">Plugging into a TRIG jack stops that voice's own sequencer: sci is the sequencer now. VELO is at maximum with nothing plugged in, so velocity can only turn a voice down. If a pad doesn't fire, try the notes an octave up or down; if hits are missed, use <i>gate out</i> instead of trigger out.</p>
 </div>
 <div>
-<h2>3 · Effects bus (audio)</h2>
+<h2>Page 2 · crushers</h2>
 <ol>
-<li><b>Audio Input</b> (L) → <b>Audio Mixer</b> or VCA for gain (the L6max AUX send is quieter than Eurorack level).</li>
-<li>→ <b>Bit Crusher</b> → <b>Aliaser</b> (decimator).</li>
-<li>Optional: → <b>Delay Line</b> or <b>Granular</b>, then a dry/wet <b>Audio Mixer</b>.</li>
-<li>→ <b>Audio Output</b> L+R → L6max ch 7.</li>
+<li>Top row: <b>Bit Crusher</b> → <b>Aliaser</b> (the ZOIA's decimator) → <b>Audio Balance</b> (mono) in 2.</li>
+<li><b>Audio in L</b> → Bit Crusher in, and → Audio Balance in 1 (dry). Audio Balance out → <b>Audio out L</b>.</li>
+<li>Second row: the same chain on <b>audio in R</b> → <b>audio out R</b> for the drums.</li>
+<li>Audio in L pad <b>−12 dB</b> (the Hades is hot). Mix: bass about halfway, drums further toward crushed.</li>
 </ol>
-<h2>Play it live</h2>
-<ul>
-<li>Put bit depth, aliaser rate and the dry/wet mix on one ZOIA page as knob-sized controls so you can grab them mid-set.</li>
-<li>Patch an <b>LFO</b> to the aliaser rate for movement, or feed it from <b>CV In</b> if you add a CV source later.</li>
-<li>Per-channel AUX2 sends on the L6max choose what gets crushed, so the same patch can hit the drums one minute and the norns loops the next.</li>
-</ul>
-</div>
-<div>
-<h2>Keep it to one patch</h2>
-<ul>
-<li>Drums, Hades and the FX bus all live in the same patch, so switching ZOIA patches mid-set stops them. Save it, and make it the patch you power up on.</li>
-<li>MIDI and CV modules cost very little (about 0.1–0.4% CPU each); nearly all the CPU is free for effects. Watch the CPU number on the ZOIA screen as you add delays or granular.</li>
-</ul>
-<h2>Channels at a glance</h2>
+<h2>Starting settings</h2>
 <table class="ptab">
-<tr><td>ch 10</td><td>Alecto voice 1 → CV 1 (+ accent CV 3)</td></tr>
-<tr><td>ch 11</td><td>Alecto voice 2 → CV 2</td></tr>
-<tr><td>ch 12</td><td>Hades → MIDI out</td></tr>
-<tr><td>audio in</td><td>L6max AUX 2</td></tr>
-<tr><td>audio out</td><td>L6max ch 7</td></tr>
+<tr><th></th><th>Bass (L)</th><th>Drums (R)</th></tr>
+<tr><td>crushed bits</td><td>~20, up till it growls</td><td>~22</td></tr>
+<tr><td>alias amount</td><td>low</td><td>higher</td></tr>
+<tr><td>mix</td><td>halfway</td><td>toward crushed</td></tr>
 </table>
-<p class="note">Module names follow the ZOIA module list; exact parameter names can differ by firmware. Check each module's help screen.</p>
+</div>
+<div>
+<h2>Move it from the nanoPAD2</h2>
+<ul>
+<li>Add <b>Midi CC In</b> modules on channel 10 for the X-Y pad's CCs (often CC 1 and 2; check the Korg Kontrol Editor) and connect them to crushed bits, alias amount or mix.</li>
+<li>sci passes the nanoPAD2's CCs to the ZOIA on the drum channel, and DRUM page REC records the moves with the hits.</li>
+</ul>
+<h2>At a glance</h2>
+<table class="ptab">
+<tr><td>ch 10 note 36</td><td>CV 1 → TRIG 1, CV 3 → VELO 1</td></tr>
+<tr><td>ch 10 note 38</td><td>CV 2 → TRIG 2, CV 4 → VELO 2</td></tr>
+<tr><td>ch 10 CCs</td><td>crusher controls</td></tr>
+<tr><td>audio in L / R</td><td>Hades / Alecto MASTER</td></tr>
+<tr><td>audio out L / R</td><td>L6max ch 1 / ch 3</td></tr>
+</table>
+<p class="note">The Hades does <b>not</b> go through the ZOIA's MIDI: the ZOIA manual describes no MIDI thru, so it has its own feed from the U2MIDI. Full build, test steps and Layouts B and C: the ZOIA build guide and the CV guide.</p>
 </div>
 </div><div class="pb"></div><div class="mhead"><h1>Quick start</h1><span class="sub">Your first loops, in order</span><span class="pg"></span></div>
 <div class="cols3">
@@ -581,7 +575,7 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 <tr><td>PLAY</td><td>Drums start with the transport, step 1 on the downbeat, and stop with it.</td></tr>
 <tr><td>UNDO</td><td>Steps back through drum edits: steps, accents, length, clock, shift, clear.</td></tr>
 <tr><td>CLEAR</td><td>Hold 1 s: clears both lanes' steps. Undo brings them back.</td></tr>
-<tr><td>REC</td><td>Records the <b>nanoPAD2</b> into the lanes: each hit goes to the nearest step of its lane, and hits at or above <i>accent from velocity</i> (100) become accents. A hit just before a step plays once, not twice. UNDO removes the whole pass.</td></tr>
+<tr><td>REC</td><td>Records the <b>nanoPAD2</b> into the lanes: each hit goes to the nearest step of its lane, and each step replays at the velocity you hit it (hits at or above <i>accent from velocity</i>, 100, light as accents). X-Y pad moves are recorded too. A hit just before a step plays once, not twice. UNDO removes the whole pass.</td></tr>
 </table>
 <h2>Timing</h2>
 <div>Drums run on the clock, not the tape. Brake and varispeed bend the loops, but the beat holds.</div>
@@ -590,12 +584,12 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 <h2>PARAMS: drums (Alecto)</h2>
 <table>
 <tr><td>drum out</td><td>The MIDI device for the norns shield's TRS out (separate from the Nymphes).</td></tr>
-<tr><td>voice 1 / 2 channel</td><td>10 / 11</td></tr>
-<tr><td>voice 1 / 2 note</td><td>36 / 36. Match the ZOIA patch.</td></tr>
-<tr><td>velocity / accent</td><td>80 / 127, for a ZOIA velocity → CV out 3 accent.</td></tr>
+<tr><td>voice 1 / 2 channel</td><td>10 / 10</td></tr>
+<tr><td>voice 1 / 2 note</td><td>36 / 38. Match the ZOIA patch.</td></tr>
+<tr><td>velocity / accent</td><td>80 / 127 for grid steps. ZOIA velocity → CV out 3/4 → VELO 1/2.</td></tr>
 <tr><td>trigger length</td><td>15 ms. Lengthen it if the Alecto misses hits.</td></tr>
 </table>
-<div style="margin-top:6px;color:#555">Saved in save slots: steps, accents, lengths, clocks and mutes.</div>
+<div style="margin-top:6px;color:#555">Saved in save slots: steps, accents, recorded velocities and X-Y moves, lengths, clocks and mutes. Tapping a recorded step on the grid sets it back to 80/127.</div>
 </div>
 </div>
 <div class="pb"></div>
@@ -634,7 +628,7 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 </div>
 </div>
 
-<div class="pb"></div><div class="mhead"><h1>PARAMS reference</h1><span class="sub">Everything in the norns PARAMS menu</span><span class="pg"></span></div><table class="ptab"><tr><th>Group</th><th>Setting</th><th>What it does</th></tr><tr><td>S.C.I.E.N.C.E.</td><td><b>LinnStrument in</b></td><td>The LinnStrument's MIDI port.</td></tr><tr><td></td><td><b>thru (hear live)</b></td><td>on: what you play goes to the selected track's synth through norns.</td></tr><tr><td></td><td><b>LinnStrument bend range</b></td><td>The LinnStrument's MPE bend range (default 48).</td></tr><tr><td></td><td><b>synth bend range</b></td><td>The synth's bend range. Recorded bends are rescaled from one to the other.</td></tr><tr><td></td><td><b>slide (Y) cc</b></td><td>The CC carrying slide (default 74).</td></tr><tr><td>controllers</td><td><b>nanoKEY in / nanoPAD2 in</b></td><td>Found by name; "none" if not plugged in. Neither can share the LinnStrument's port.</td></tr><tr><td></td><td><b>nanoKEY plays</b></td><td>track 1–4 or the selected track (default track 3, the Hades). It plays on the track's first channel, with thru, and records when that track is recording.</td></tr><tr><td></td><td><b>pad note: lane 1 / 2</b></td><td>36 / 38: the nanoPAD2 pads that play each Alecto lane.</td></tr><tr><td></td><td><b>accent from velocity</b></td><td>100: pad hits this hard or harder become accents.</td></tr><tr><td>track 1–4</td><td><b>synth out</b></td><td>MIDI device for that track. Defaults: T1 Electra Controller 1 (Nymphes), T2 Electra Controller 2 (Micromonsta 2), T3 the shield's TRS port (Hades), T4 Electra Controller 1.</td></tr><tr><td></td><td><b>first / last member ch</b></td><td>MPE channels the track plays on. Default 2–7; track 3 is 12–12, which makes it mono and moves live thru onto channel 12.</td></tr><tr><td></td><td><b>audio follows tape</b></td><td>yes: tape speed, brake and reverse move this track's audio.</td></tr><tr><td></td><td><b>fx cutoff / fx resonance</b></td><td>The track's low-pass filter (LOOP page FX).</td></tr><tr><td></td><td><b>note quantize / strength</b></td><td>Playback quantize grid and amount (QUANT page).</td></tr><tr><td>grid notes</td><td><b>velocity / pressure / slide</b></td><td>Values for notes tapped in on the MIDI page.</td></tr><tr><td>audio</td><td><b>overdub keeps</b></td><td>How much of the old audio stays on each overdub pass (1 = all).</td></tr><tr><td></td><td><b>mute midi after print</b></td><td>Mutes a track's MIDI once PRINT finishes.</td></tr><tr><td></td><td><b>LOOP rec action</b></td><td>REC›DUB (505 default) or REC›PLAY.</td></tr><tr><td></td><td><b>LOOP fade time</b></td><td>Length of FADE in/out on the LOOP page.</td></tr><tr><td>drums (Alecto)</td><td><b>drum out</b></td><td>MIDI device for the shield's TRS out, to the Euroburo.</td></tr><tr><td></td><td><b>voice 1 / 2 channel</b></td><td>10 / 11.</td></tr><tr><td></td><td><b>voice 1 / 2 note</b></td><td>36 / 36. Match the ZOIA patch.</td></tr><tr><td></td><td><b>velocity / accent velocity</b></td><td>80 / 127.</td></tr><tr><td></td><td><b>trigger length (ms)</b></td><td>15. Raise it if the Alecto misses hits.</td></tr><tr><td>screen</td><td><b>screen view</b></td><td>guide or reels at startup. A tap of K1 switches.</td></tr><tr><td>tape</td><td><b>tape drives</b></td><td>MIDI+audio, MIDI only or audio only.</td></tr><tr><td></td><td><b>speed bends pitch</b></td><td>on: slowing the tape lowers pitch, like real tape.</td></tr><tr><td></td><td><b>varispeed slew</b></td><td>How quickly speed changes reach the target.</td></tr><tr><td></td><td><b>brake time</b></td><td>How long a brake takes to stop and to spin back up.</td></tr><tr><td></td><td><b>flutter depth</b></td><td>Wow and flutter amount (E1 also sets it).</td></tr></table><div class="pb"></div><div class="mhead"><h1>Troubleshooting &amp; limits</h1><span class="sub">What to check</span><span class="pg"></span></div>
+<div class="pb"></div><div class="mhead"><h1>PARAMS reference</h1><span class="sub">Everything in the norns PARAMS menu</span><span class="pg"></span></div><table class="ptab"><tr><th>Group</th><th>Setting</th><th>What it does</th></tr><tr><td>S.C.I.E.N.C.E.</td><td><b>LinnStrument in</b></td><td>The LinnStrument's MIDI port.</td></tr><tr><td></td><td><b>thru (hear live)</b></td><td>on: what you play goes to the selected track's synth through norns.</td></tr><tr><td></td><td><b>LinnStrument bend range</b></td><td>The LinnStrument's MPE bend range (default 48).</td></tr><tr><td></td><td><b>synth bend range</b></td><td>The synth's bend range. Recorded bends are rescaled from one to the other.</td></tr><tr><td></td><td><b>slide (Y) cc</b></td><td>The CC carrying slide (default 74).</td></tr><tr><td>controllers</td><td><b>nanoKEY in / nanoPAD2 in</b></td><td>Found by name; "none" if not plugged in. Neither can share the LinnStrument's port.</td></tr><tr><td></td><td><b>nanoKEY plays</b></td><td>track 1–4 or the selected track (default track 3, the Hades). It plays on the track's first channel, with thru, and records when that track is recording.</td></tr><tr><td></td><td><b>pad note: lane 1 / 2</b></td><td>36 / 38: the nanoPAD2 pads that play each Alecto lane.</td></tr><tr><td></td><td><b>accent from velocity</b></td><td>100: pad hits this hard or harder become accents.</td></tr><tr><td>track 1–4</td><td><b>synth out</b></td><td>MIDI device for that track. Defaults: T1 Electra Controller 1 (Nymphes), T2 Electra Controller 2 (Micromonsta 2), T3 the U2MIDI (Hades), T4 Electra Controller 1.</td></tr><tr><td></td><td><b>first / last member ch</b></td><td>MPE channels the track plays on. Default 2–7; track 3 is 2–2, which makes it mono and moves live thru onto channel 2.</td></tr><tr><td></td><td><b>audio follows tape</b></td><td>yes: tape speed, brake and reverse move this track's audio.</td></tr><tr><td></td><td><b>fx cutoff / fx resonance</b></td><td>The track's low-pass filter (LOOP page FX).</td></tr><tr><td></td><td><b>note quantize / strength</b></td><td>Playback quantize grid and amount (QUANT page).</td></tr><tr><td>grid notes</td><td><b>velocity / pressure / slide</b></td><td>Values for notes tapped in on the MIDI page.</td></tr><tr><td>audio</td><td><b>overdub keeps</b></td><td>How much of the old audio stays on each overdub pass (1 = all).</td></tr><tr><td></td><td><b>mute midi after print</b></td><td>Mutes a track's MIDI once PRINT finishes.</td></tr><tr><td></td><td><b>LOOP rec action</b></td><td>REC›DUB (505 default) or REC›PLAY.</td></tr><tr><td></td><td><b>LOOP fade time</b></td><td>Length of FADE in/out on the LOOP page.</td></tr><tr><td>drums (Alecto)</td><td><b>drum out</b></td><td>MIDI device for the shield's TRS out, to the Euroburo.</td></tr><tr><td></td><td><b>voice 1 / 2 channel</b></td><td>10 / 10.</td></tr><tr><td></td><td><b>voice 1 / 2 note</b></td><td>36 / 38. Match the ZOIA patch.</td></tr><tr><td></td><td><b>velocity / accent velocity</b></td><td>80 / 127.</td></tr><tr><td></td><td><b>trigger length (ms)</b></td><td>15. Raise it if the Alecto misses hits.</td></tr><tr><td>screen</td><td><b>screen view</b></td><td>guide or reels at startup. A tap of K1 switches.</td></tr><tr><td>tape</td><td><b>tape drives</b></td><td>MIDI+audio, MIDI only or audio only.</td></tr><tr><td></td><td><b>speed bends pitch</b></td><td>on: slowing the tape lowers pitch, like real tape.</td></tr><tr><td></td><td><b>varispeed slew</b></td><td>How quickly speed changes reach the target.</td></tr><tr><td></td><td><b>brake time</b></td><td>How long a brake takes to stop and to spin back up.</td></tr><tr><td></td><td><b>flutter depth</b></td><td>Wow and flutter amount (E1 also sets it).</td></tr></table><div class="pb"></div><div class="mhead"><h1>Troubleshooting &amp; limits</h1><span class="sub">What to check</span><span class="pg"></span></div>
 <div class="cols3">
 <div>
 <h2>No sound from the Nymphes</h2>
@@ -646,7 +640,7 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 <h2>Micromonsta or Hades silent</h2>
 <ul>
 <li>Micromonsta: router rule USB Device Port 2 → USB Host Port 2, and it's on host Port 2.</li>
-<li>Hades: the ZOIA patch passes ch 12 to MIDI out, the Hades is set to ch 12, and track 3's synth out is the TRS port.</li>
+<li>Hades: track 3's synth out is the U2MIDI, DIP switch 3 on (ch 2), notes within C-1 to C4. If it plays drum notes, it's still on OMNI.</li>
 </ul>
 <h2>nanoKEY or nanoPAD2 not responding</h2>
 <ul><li>PARAMS → controllers: check <i>nanoKEY in</i> and <i>nanoPAD2 in</i>. They can't use the LinnStrument's port.</li>
@@ -655,7 +649,8 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 <ul><li>The two bend-range PARAMS must match the LinnStrument and the synth.</li></ul>
 <h2>Alecto silent</h2>
 <ul>
-<li>drum out = the shield's TRS MIDI port; the Euroburo is listening on ch 10/11 with matching notes.</li>
+<li>drum out = the shield's TRS MIDI port; the Euroburo is listening on ch 10, notes 36/38 (try an octave up or down). TRS Type A vs B: see the ZOIA build guide.</li>
+<li>Very quiet: VELO can only turn down. Unplug the VELO cables to compare.</li>
 <li>Lane not muted (row 3/6 key 16 lit); transport playing.</li>
 <li>Raise trigger length.</li>
 </ul>
@@ -678,7 +673,7 @@ code { font-size: 8pt; background:#f2f2f2; padding: 0 2px; border-radius: 2px; }
 <li>Audio is mono, up to 55 s per loop (8 bars at about 35 bpm).</li>
 <li>One loop length for all tracks. Changing bars or tempo after recording audio misaligns it; SAVE/LOAD restores both.</li>
 <li>Audio undo is one step (press again to redo).</li>
-<li>The Hades gets notes only through the ZOIA (no pitch bend); it's mono.</li><li>The Mini's USB host is full with the Nymphes and Micromonsta 2.</li>
+<li>The Hades is mono and plays C-1 to C4; live thru drops pitch bend on it.</li><li>The Mini's USB host is full with the Nymphes and Micromonsta 2.</li>
 <li>Drums run on the clock and don't follow the tape.</li>
 
 <li>Single-track loads only go into the same track number.</li>

@@ -40,13 +40,13 @@ Saves live in `dust/data/sci`. Saves from the older `mpecap` script are moved th
 | norns shield XL Pro + 16×8 grid | runs sci |
 | Electra One Mini | routes norns → Nymphes (host Port 1) and Micromonsta 2 (host Port 2) |
 | Dreadbox Nymphes, Micromonsta 2 | MPE synths (tracks 1, 2) |
-| Dreadbox Hades | mono bass (track 3), via the ZOIA's MIDI out on channel 12 |
-| ZOIA Euroburo | MIDI → triggers for the Alecto (ch 10/11), Hades MIDI, effects bus |
-| Dreadbox Alecto | drums (DRUM page) |
+| Dreadbox Hades | mono bass (track 3), via a U2MIDI (USB → 5-pin DIN) on channel 2 (DIP switch 3 on) |
+| ZOIA Euroburo | ch 10 notes 36/38 → TRIG and VELO for the Alecto; bit crusher + aliaser inline on both synths |
+| Dreadbox Alecto | drums (DRUM page), audio through ZOIA in R |
 | Korg nanoKEY / nanoPAD2 | extra input |
-| Zoom L6max | mixer; AUX 1 feeds the norns, AUX 2 feeds the ZOIA |
+| Zoom L6max | mixer; ZOIA out L/R on ch 1/3, AUX 1 feeds the norns |
 
-Every port, channel and note is a PARAMS setting, so other gear works too.
+Every port, channel and note is a PARAMS setting, so other gear works too. The wiring matches the ZOIA build guide and the Alecto/Hades CV guide.
 
 ## Docs
 

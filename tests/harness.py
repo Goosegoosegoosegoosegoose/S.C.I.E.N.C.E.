@@ -81,7 +81,7 @@ midi = {
   vports = {
     {name = "LinnStrument MIDI"}, {name = "Electra Controll 1"},
     {name = "Electra Controll 2"}, {name = "Electra Controll 3"},
-    {name = "ttymidi"}, {name = "nanoKEY2"}, {name = "nanoPAD2"},
+    {name = "nanoKEY2"}, {name = "nanoPAD2"}, {name = "U2MIDI"}, {name = "ttymidi"},
   },
   connect = function(i) outs[i] = outs[i] or mkout("port" .. i) return outs[i] end,
   to_msg = function(d) return d end,   -- tests pass already-decoded messages
