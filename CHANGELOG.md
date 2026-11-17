@@ -1,6 +1,7 @@
 # Changelog
 
 ## 2026-11-17 (later): matched to the ZOIA build guide and CV guide
+- **Docs:** the CV and Patching Guide, the ZOIA patch build guide and the code walkthrough are now in `docs/`, as markdown and PDF.
 - **Hades** now defaults to the **U2MIDI** port on **channel 2** (the Hades' DIP switch 3), not the ZOIA on channel 12. The ZOIA has no MIDI thru.
 - **Drums:** both Alecto voices on **channel 10**, notes **36 and 38**, matching the ZOIA patch (CV 1/2 → TRIG, CV 3/4 → VELO).
 - **Recorded velocity:** nanoPAD2 hits replay at the velocity you played, so the Alecto's VELO follows your playing. Live pad hits pass their velocity too. A grid tap sets a step back to 80/127.

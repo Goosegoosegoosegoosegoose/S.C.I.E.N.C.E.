@@ -52,6 +52,14 @@ Every port, channel and note is a PARAMS setting, so other gear works too. The w
 
 - [`docs/sci-manual.pdf`](docs/sci-manual.pdf) is the full manual (13 pages): wiring, ZOIA patch recipe, quick start, every grid page, PARAMS, troubleshooting, and a walkthrough of the code.
 - [`docs/source/sci-manual.html`](docs/source/sci-manual.html) is the manual's source. Print it to PDF from a browser in landscape Letter.
+- [`docs/sci-code-walkthrough.pdf`](docs/sci-code-walkthrough.pdf) explains what each section of `sci.lua` does.
+
+### Rig guides
+
+- **CV and Patching Guide: Dreadbox Alecto and Hades** ([markdown](docs/guides/cv-patching-guide-alecto-hades.md) · [PDF](docs/guides/cv-patching-guide-alecto-hades.pdf)): CV basics, the Alecto patchbay, the Hades, patches between them, a ZOIA crash course, and the nanoPAD2/nanoKEY layouts that sci supports.
+- **ZOIA Euroburo Patch Build: norns sci to Alecto and Hades** ([markdown](docs/guides/zoia-euroburo-patch-build.md) · [PDF](docs/guides/zoia-euroburo-patch-build.pdf)): the cable list, MIDI plan, and a module-by-module build of the ZOIA patch sci's defaults are set up for.
+
+The sci manual's wiring and ZOIA pages match these guides. Where they differ, the guides win: they're written from the Dreadbox, Empress and Korg manuals.
 - [`CHANGELOG.md`](CHANGELOG.md) is the build history.
 
 ## Testing
