@@ -1,6 +1,6 @@
 # S.C.I.E.N.C.E.
 
-**South Central Indiana Electro Noise Circuit Experiment**: a norns + grid instrument, short name **sci**. It's also the name I perform under.
+**South Central Indiana Electro Noise Circuit Experiment**: a norns + grid instrument, short name **sci**. 
 
 sci records LinnStrument MPE performances as editable loops, keeping every note's bend, slide and pressure. Each MIDI loop is paired with an audio loop, and both run on a Reels-style tape transport you can brake, reverse and varispeed. Around that it adds an RC-505-style looper page, a live quantize page, two trigger lanes for a Dreadbox Alecto, and 16 save slots. A Korg nanoKEY plays the bass, and a nanoPAD2 plays and records the drums.
 
